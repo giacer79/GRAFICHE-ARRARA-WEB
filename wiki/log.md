@@ -597,3 +597,97 @@ Ordine cronologico, più recente in fondo.
   ampio e uniforme), creando un doppio alone. Rimosso il
   radial-gradient CSS, lasciato solo `#020202` piatto: ora l'unico
   bagliore è quello naturale del video. Cache-busting `?v=44`.
+- **Redesign home fedele a `HOME.pdf` — 28/08/2026**: l'utente ha
+  fornito `HOME.pdf` (mockup InDesign, pagina singola 1920×5000pt) come
+  design definitivo della nuova home. Pianificato in
+  `improvement-plan.md`, poi implementato in `src/index.html` e
+  `src/style.css`:
+  - Sfondo hero sostituito con foto reale (notebook/penne/nastro
+    rosso-fucsia), estratta dal PDF come `home-hero-notebook.jpg`
+    (solo porzione fotografica, senza testo, per non duplicare
+    l'overlay HTML già presente).
+  - Aggiunta una nuova sezione **`.icon-row`** dopo le 5 card
+    01–05: 5 tile con icone isometriche 3D (progettazione, stampa,
+    grande formato, allestimenti, digitale), assenti prima d'ora.
+    Estratte dal PDF come 5 file `icon-*.jpg` (512×345px ciascuno),
+    con link alle rispettive pagine.
+  - Sezione **Processo**: aggiunto `process-wave.jpg` come sfondo
+    reale della grafica ad onda rosso→fucsia (prima `.ribbon` era
+    vuoto). Prima estrazione includeva per errore il testo degli step
+    già presenti in HTML (`"Un processo completo"`, `"Dalla
+    strategia..."`), creando un effetto "doppia scritta"/ghosting
+    sovrapposta al testo live: risolto ritagliando una fascia più
+    stretta della sola parte grafica dell'onda, senza testo.
+  - Sezione **Progetti in evidenza**: aggiunta didascalia corsiva
+    sotto ciascuna foto progetto (`.project-caption`, es. "/ brochure
+    comune di boffalora"), mantenendo il badge ciano esistente
+    sull'immagine e aggiungendo un'icona "+" al badge.
+  - Sezione **Esperienza**: aggiunta foto reale di una persona
+    (giacca blu/camicia fucsia) accanto alla griglia statistiche,
+    estratta dal PDF come `team-portrait.jpg`. Prima versione del CSS
+    (`margin-right:-56px`) faceva sovrapporre la foto alla statistica
+    "1" e parte del suo testo: corretto riducendo la larghezza
+    (`width:190px`) e usando un margine positivo (`margin-right:6px`)
+    così la foto affianca la griglia senza coprirla.
+  - Verifica visiva completa via screenshot Playwright (1440×900,
+    server locale) confrontata sezione per sezione con le fasce del
+    PDF: header/hero, card 01–05 + icon-row, visione, processo,
+    progetti, esperienza, CTA/footer — tutte coerenti.
+  - Nota per il futuro: le foto usate nelle card "Progetti in
+    evidenza" (`progetto-boffalora.jpg`, `progetto-luxury.jpg`,
+    `progetto-antonino.jpg`, `portfolio-hero-pastel.jpg`, già
+    esistenti nel progetto prima di questo intervento) contengono già
+    una scritta bianca "in-immagine" nello stesso punto dove ora
+    compare anche il badge ciano live con lo stesso testo (es.
+    "COMUNICAZIONE") — leggera ridondanza visiva preesistente, non
+    introdotta da questa redesign; da valutare in futuro se
+    ricroppare quelle foto.
+  - Nessuna delle altre 5 pagine è stata toccata, come da richiesta.
+  Le modifiche sono state fatte direttamente nella cartella del
+  progetto sul Mac; **in attesa di indicazione dell'utente per il
+  commit/push su GitHub**.
+- **Bug critico scoperto e corretto: CSS/JS condiviso sovrascritto dal
+  redesign home — 28/08/2026**. Riscrivendo per intero `style.css` e
+  `script.js` durante il redesign della home (voce precedente), erano
+  state perse tutte le regole di stile e la logica condivise dalle
+  altre 5 pagine: struttura `.site-frame`/`.site-header`/`.subhero`/
+  `.content-page`, il menu ad hamburger (`.menu-toggle`/`.main-nav`),
+  la transizione dissolvenza tra pagine (`#pageTransition`) e il video
+  di apertura lampadina→logo (`.site-intro`, `intro-completo.mp4`).
+  Le 5 pagine erano quindi completamente senza stile (verificato con
+  screenshot). Individuato chiedendo all'utente di riattivare l'intro:
+  la richiesta ha fatto emergere il problema più ampio.
+  **Correzione**: recuperato lo `style.css` (795 righe) e lo
+  `script.js` (157 righe) originali e completi dal progetto sorgente
+  `grafiche-arrara-project` (cartella separata sul Mac, autorizzata
+  dall'utente per l'occasione), poi:
+  - Usato quel `style.css` come base (invariato), applicando anche il
+    fix già documentato per il doppio bagliore rosso dell'intro
+    (rimosso il radial-gradient residuo, mai stato aggiornato in
+    questa copia parallela).
+  - Aggiunte in coda le regole del redesign home, rinominando le
+    classi che sarebbero altrimenti entrate in conflitto con quelle
+    già usate dalle altre pagine: `.eyebrow`→`.home-eyebrow`,
+    `.footer`→ riuso di `.home-footer`/`.socials` già esistenti,
+    `.cta`→ riuso di `.final-cta`/`.final-cta-heading`/`.final-cta-foot`
+    già esistenti (stesso asset `final-cta-bg.jpg`), `.process-grid`→
+    `.home-process-grid`, e così via per le altre classi home-specifiche
+    (`.home-section`, `.home-two-col`, `.home-step`, `.home-project*`,
+    ecc.) — verificato con un controllo automatico che non ci fosse più
+    nessuna sovrapposizione di nomi con le classi usate dalle altre 5
+    pagine.
+  - Riportato l'header/footer/nav di `index.html` alla stessa struttura
+    condivisa (`site-frame`/`site-header`/`menu-toggle`/`main-nav`)
+    delle altre pagine, mantenendo però tutti i contenuti nuovi del
+    redesign PDF (hero, riga icone, visione, processo, progetti,
+    esperienza).
+  - Ricostruito `script.js` a partire dall'originale, rimuovendo solo
+    la logica ormai non più pertinente del vecchio hero-video (zoom,
+    parallax) sostituito dal nuovo hero statico, e mantenendo intatte
+    transizione tra pagine, menu, intro e form contatti.
+  - Verificato con screenshot Playwright tutte e 6 le pagine: menu,
+    transizioni, intro (video + barra di caricamento + icone), home
+    completa e le 5 pagine interne — tutte correttamente stilizzate.
+  Nota: la versione rotta era già stata inclusa nel primo commit Git
+  (`679fd68`); il commit non era ancora stato aggiornato con la
+  correzione — da rifare al prossimo push richiesto dall'utente.

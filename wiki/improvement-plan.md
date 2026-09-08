@@ -1,5 +1,69 @@
 # Improvement plan — prossimi step consigliati
 
+## Redesign home fedele a HOME.pdf — 28/08/2026 ✅ completato
+
+L'utente ha fornito `HOME.pdf` (mockup InDesign, pagina singola
+1920×5000pt) con il design definitivo della home. Obiettivo: riprodurre
+fedelmente struttura, testi, grafiche e immagini nella home attuale
+(`src/index.html` + `style.css`), senza toccare le altre 5 pagine.
+
+Analisi del PDF (sezione per sezione) e confronto con lo stato
+attuale del sito in questa cartella (copia semplificata, non ancora
+allineata alle evoluzioni documentate più sotto in questo file):
+
+1. **Header/nav** — già coerente (logo + 5 voci), nessuna modifica.
+2. **Hero** — foto reale (notebook/penne/nastro rosso-fucsia) diversa
+   dal placeholder `home-hero.jpg` attualmente in uso. Estratta dal PDF
+   come `home-hero-notebook.jpg` (solo porzione fotografica, senza
+   testo, per non duplicare l'overlay HTML esistente).
+3. **Card 01–05** — già coerenti nella struttura.
+4. **Riga icone isometriche (NUOVA)** — 5 tile con icone 3D
+   (progettazione/stampa/grande formato/allestimenti/digitale), assenti
+   nell'attuale home. Estratte dal PDF come `icon-*.jpg` (5 file).
+5. **Visione** — già coerente.
+6. **Processo** — nel PDF ha uno sfondo con grande grafica ad onda
+   rosso→fucsia (assente ora, solo `.ribbon` vuoto/placeholder).
+   Estratta come `process-wave.jpg` (solo parte grafica, senza il testo
+   degli step per non duplicarlo).
+7. **Progetti in evidenza** — struttura già presente, ma badge colore e
+   didascalia sotto la foto (corsivo, fuori dall'immagine) da allineare
+   al PDF (attualmente badge dentro l'overlay, niente didascalia
+   separata).
+8. **Esperienza** — nel PDF compare una foto di una persona (giacca
+   blu/camicia fucsia) accanto alla griglia statistiche, assente ora.
+   Estratta come `team-portrait.jpg`.
+9. **CTA finale** — già coerente (foto pianta/rete già presente).
+
+Piano d'azione:
+- [x] Aggiungere sezione icone isometriche dopo le card 01–05.
+- [x] Sostituire sfondo hero con `home-hero-notebook.jpg`.
+- [x] Aggiungere `process-wave.jpg` come sfondo reale della sezione
+  Processo (al posto del placeholder).
+- [x] Aggiungere didascalia corsiva sotto ciascuna foto progetto,
+  mantenendo il badge colorato sull'immagine.
+- [x] Aggiungere `team-portrait.jpg` alla sezione Esperienza.
+- [x] Verifica visiva via screenshot/browser e confronto col PDF.
+- [x] Aggiornare `wiki/log.md` e `wiki/index.md`.
+
+Palette/font non cambiano: si riutilizzano le variabili CSS già
+presenti in questo progetto (`--red`, `--pink`, `--cyan`, `--ink`,
+`--dark`, `--title: Averta`), che sono già molto vicine ai colori
+campionati dal PDF.
+
+**Esito**: tutte le sezioni sono state implementate e verificate via
+screenshot (Playwright, 1440×900) confrontandole con le fasce del PDF.
+Dettagli su asset creati, decisioni prese e problemi risolti in
+`wiki/log.md` (voce 28/08/2026). Nota per il futuro: le card
+"Progetti in evidenza" (`.project`) riusano immagini già esistenti nel
+progetto (`progetto-boffalora.jpg`, `progetto-luxury.jpg`,
+`progetto-antonino.jpg`, `portfolio-hero-pastel.jpg`) che contengono già
+una scritta bianca "in-immagine" (es. "COMUNICAZIONE") nella stessa zona
+dove ora appare anche il badge ciano live con lo stesso testo — è una
+caratteristica preesistente di quelle foto (non introdotta da questo
+intervento), leggermente ridondante ma non un errore di questa
+redesign; da valutare in futuro se ricroppare quelle immagini.
+
+
 ## Intervento SEO completo — 04/08/2026
 
 Obiettivo approvato: collegare testi e immagini alle ricerche reali dei
