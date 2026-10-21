@@ -21,3 +21,24 @@
 @keyframes pgRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes pgMask{from{opacity:0;transform:translateY(26px);clip-path:inset(0 0 100% 0)}60%{opacity:1}to{opacity:1;transform:none;clip-path:inset(-12% -6% -12% -6%)}}
 @keyframes pgDot{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+
+/* Parti testuali delle pagine interne (tutte tranne la home): pannello grigio puntinato con sfumatura verde e angolo tagliato,
+   come il blocco "Processo" della pagina Progettazione */
+.am-copy,.az-copy,.az-story,.az-values>.wrap,.cl-cta,.ct-side{
+  --pn-cut:clamp(28px,3vw,44px);position:relative;color:#111d2d;border:0;
+  padding:clamp(28px,3vw,52px) clamp(26px,3vw,56px);
+  background:radial-gradient(rgba(24,44,55,.36) .9px,transparent .9px) 0 0/29px 29px,radial-gradient(ellipse 58% 105% at 87% 15%,rgba(215,231,167,.55),transparent 79%),radial-gradient(ellipse 60% 95% at 56% 0%,rgba(129,204,184,.24),transparent 78%),#d1d2d0;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - var(--pn-cut)),calc(100% - var(--pn-cut)) 100%,0 100%)}
+/* Azienda */
+.az-story{margin-block:clamp(28px,4vw,60px);padding-block:clamp(32px,3.4vw,60px)}
+.az-values{background:none;padding:clamp(20px,3vw,50px) 0}
+.az-values .az-head{color:#111d2d}
+.az-text{max-width:none}
+/* Clienti */
+.cl-cta{border-top:0}
+/* Contatti: il pannello sostituisce lo sfondo scuro */
+.ct-side h2{color:#111d2d}
+.ct-side p{color:#515761}
+.ct-side dt{color:#e62d39}
+.ct-side dd{color:#111d2d}
+@media(max-width:560px){.am-copy,.az-copy,.az-story,.az-values>.wrap,.cl-cta,.ct-side{padding:26px 22px 40px}}

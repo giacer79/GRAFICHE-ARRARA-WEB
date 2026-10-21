@@ -733,3 +733,10 @@ Ordine cronologico, più recente in fondo.
   riquadro di prova Esri Dark Gray si carica (CARTO dark_all ora mostra "API KEY REQUIRED"), parte Leaflet + Esri Dark Gray con etichette (stile scuro,
   tinta blu da `contatti.css`) con pan/zoom illimitati; altrimenti resta la carta
   vettoriale stilizzata. `mappa-zoom.js` si disattiva quando la mappa reale è attiva.
+
+## 21/10/2026 — Pannelli testuali nelle pagine interne
+- Le parti testuali di tutte le pagine tranne la home (`.am-copy` di Produzione e
+  Cosa progettiamo, `.az-story`/`.az-values`/`.az-copy` di Azienda, `.cl-cta` di Clienti,
+  `.ct-side` di Contatti) usano lo sfondo del blocco "Processo" di Progettazione:
+  grigio #d1d2d0 puntinato con sfumature verde/acqua e angolo in basso a destra tagliato.
+  Regola unica in fondo a `pagine.css`. Il form di Contatti resta scuro.
