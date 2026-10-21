@@ -7,14 +7,14 @@
   var svg = box.querySelector('svg.ct-map-img'), pin = box.querySelector('.pin');
   if (!svg) return;
 
-  var WX = 1400, WY = 625;            /* mezza larghezza / altezza della carta (unità SVG) */
+  var WX = 30000, WY = 30000;         /* carta praticamente illimitata (unità SVG) */
   var BASE_W = 1120, BASE_H = 500;    /* vista iniziale */
-  var MAXZ = 7;
+  var MAXZ = 30;
   var cx = 0, cy = 0, z = 1, U0 = 1, MINZ = 0.4;
   var pts = {}, pinch = null;
 
   function dims() { return { w: box.clientWidth, h: box.clientHeight }; }
-  function units() { var d = dims(); U0 = Math.max(BASE_W / d.w, BASE_H / d.h); MINZ = Math.max(d.w * U0 / (2 * WX), d.h * U0 / (2 * WY)); }
+  function units() { var d = dims(); U0 = Math.max(BASE_W / d.w, BASE_H / d.h); MINZ = Math.max(0.08, d.w * U0 / (2 * WX), d.h * U0 / (2 * WY)); }
   function clamp() {
     var d = dims(), u = U0 / z;
     z = Math.min(MAXZ, Math.max(MINZ, z)); u = U0 / z;
