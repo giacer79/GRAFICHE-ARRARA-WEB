@@ -1,0 +1,31 @@
+/* Chatta con noi — bottone fisso in basso a destra */
+.ac-chat{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:60;font-family:Arial,Helvetica,sans-serif;color:#fff}
+body.intro-active .ac-chat{display:none}
+.ac-chat-btn{display:flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 16px;border:0;border-radius:28px;background:#e62d39;color:#fff;font:800 .78rem/1 Arial,Helvetica,sans-serif;letter-spacing:.06em;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 0 rgba(230,45,57,.5);transition:transform .2s,background .2s}
+.ac-chat-btn:hover{background:#c91f2b;transform:translateY(-2px)}
+.ac-chat-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.ac-chat-btn svg{width:24px;height:24px;flex:none}
+.ac-chat.is-open .ac-chat-btn{width:56px;padding:0;justify-content:center}
+.ac-chat.is-open .ac-chat-label{display:none}
+.ac-chat-panel{position:absolute;right:0;bottom:70px;width:min(340px,calc(100vw - 32px));background:#111d2d;border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 60px rgba(0,0,0,.55);transform-origin:100% 100%}
+.ac-chat-panel[hidden]{display:none}
+.ac-chat-head{display:flex;align-items:center;gap:12px;padding:16px 18px;background:linear-gradient(90deg,#17263b,#111d2d);border-bottom:2px solid #e62d39}
+.ac-chat-head img{width:38px;height:auto}
+.ac-chat-head strong{display:block;font-size:.9rem}
+.ac-chat-head span{display:block;font-size:.72rem;color:#aeb7c2;margin-top:3px}
+.ac-chat-body{padding:16px 18px 18px;display:grid;gap:12px}
+.ac-chat-msg{margin:0;background:#1b2c44;padding:12px 14px;font-size:.86rem;line-height:1.4;border-left:2px solid #00efff}
+.ac-chat-body textarea{width:100%;min-height:84px;resize:vertical;background:#0c1623;border:1px solid #3d516a;color:#fff;padding:11px 12px;font:inherit;font-size:.86rem}
+.ac-chat-body textarea:focus{outline:2px solid #00efff;outline-offset:1px}
+.ac-chat-send{display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 16px;background:#e62d39;color:#fff;border:0;font:800 .78rem/1 Arial,Helvetica,sans-serif;letter-spacing:.05em;cursor:pointer;text-decoration:none}
+.ac-chat-send:hover{background:#c91f2b}
+.ac-chat-alt{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.78rem;color:#aeb7c2}
+.ac-chat-alt a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.ac-chat-alt a:hover{color:#00efff}
+@media (prefers-reduced-motion:no-preference){
+  .ac-chat-btn{animation:acPulse 2.6s ease-out 2s 3}
+  .ac-chat-panel:not([hidden]){animation:acPop .28s cubic-bezier(.2,.8,.2,1)}
+}
+@keyframes acPulse{0%{box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 0 rgba(230,45,57,.55)}70%,100%{box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 18px rgba(230,45,57,0)}}
+@keyframes acPop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@media (max-width:520px){.ac-chat-label{display:none}.ac-chat-btn{width:56px;padding:0;justify-content:center}}

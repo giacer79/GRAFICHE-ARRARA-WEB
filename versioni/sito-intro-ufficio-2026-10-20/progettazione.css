@@ -1,0 +1,249 @@
+html{overflow-x:clip}
+.design-page{background:#eeeced;overflow-x:clip}
+.design-page .site-header{height:114px}
+.design-page .header-inner{width:var(--page)}
+.design-page .brand img{width:88px;height:auto}
+.design-page .site-nav{gap:clamp(18px,2.5vw,49px)}
+.design-page .site-nav a{font-size:.73rem;font-weight:800}
+.design-page .site-nav a.active::after{background:var(--pink);height:2px}
+.design-hero{height:clamp(500px,39.75vw,764px);background:#b5b5b5;position:relative;overflow:hidden;isolation:isolate}
+.liquid-filter{position:absolute;pointer-events:none}
+.design-ribbon{position:absolute;z-index:0;left:43%;top:-11.8%;width:72.35%;height:auto;max-width:none;transform-origin:15% 50%;transform:translate3d(0,0,0) rotate(0deg) scale(1);transition:transform var(--ribbon-duration,18s) cubic-bezier(.37,0,.63,1);pointer-events:none;user-select:none;will-change:transform}
+.design-hero-content{height:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(30px,3vw,58px) 0 clamp(40px,4vw,78px)}
+.design-kicker{font-weight:800;letter-spacing:.095em;font-size:.73rem;margin:0}
+.design-kicker span{color:#ed1c45}
+.design-hero h1{font-size:clamp(3.1rem,6.1vw,7.3rem);letter-spacing:-.045em;line-height:.94;margin:clamp(60px,6vw,116px) 0 0;max-width:880px}
+.design-hero .dot{color:#ed2d46}
+.design-hero-lead{border-left:2px solid #ed2d46;padding-left:clamp(24px,2.5vw,48px);margin:clamp(34px,3vw,58px) 0 0;color:#ed2d46;font-family:Averta,Arial,sans-serif;font-weight:900;font-size:clamp(1.1rem,1.4vw,1.55rem);line-height:1.15;max-width:780px}
+.design-hero .text-link{margin: auto 0 0 clamp(24px,2.5vw,48px);font-size:.81rem;letter-spacing:.06em}
+.design-hero .text-link span{font-size:2.2rem}
+.design-content{padding:clamp(26px,2.15vw,42px) 0 clamp(70px,7vw,140px);background:#eeeced;color:#111d2d}
+.design-process,.design-grid{width:93.8%;max-width:1800px;margin-inline:auto}
+.design-process{position:relative;overflow:hidden;min-height:clamp(290px,21.4vw,410px);padding:clamp(34px,3.05vw,58px) clamp(36px,3vw,60px);background:radial-gradient(ellipse 58% 105% at 87% 15%,rgba(215,231,167,.55),transparent 79%),radial-gradient(ellipse 60% 95% at 56% 0%,rgba(129,204,184,.24),transparent 78%),#d1d2d0;clip-path:polygon(0 0,100% 0,100% calc(100% - 54px),calc(100% - 54px) 100%,0 100%)}
+.design-process::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(24,44,55,.48) .9px,transparent .9px);background-size:29px 29px;opacity:.75;pointer-events:none}
+.design-process>*{position:relative}
+.design-process .eyebrow{font-size:.73rem;margin:0 0 20px}
+.design-process h2{font-size:clamp(2rem,3.5vw,4.1rem);line-height:1.01;margin:0 0 28px;max-width:850px}
+.design-process-lead{border-left:2px solid #ed2d46;padding:6px 0 6px clamp(28px,3vw,58px);color:#515761;font-size:1.03rem;line-height:1.25;margin:0;max-width:760px}
+.design-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,2.5vw,48px);margin-top:clamp(18px,1.4vw,28px)}
+.design-card{position:relative;display:block;min-height:clamp(300px,24.7vw,475px);padding:clamp(27px,2.1vw,42px);background:#4a5462;color:#fff;clip-path:polygon(22px 0,100% 0,100% 100%,0 100%,0 22px);filter:drop-shadow(0 13px 18px rgba(15,26,38,.22));transition:transform .35s,background .35s,filter .35s}
+.design-card:hover,.design-card:focus-visible{background:#535e6e;filter:drop-shadow(0 0 12px rgba(239,43,75,.28));transform:translateY(-5px)}
+.design-card-no{display:block;color:#00e9f5;font-size:.94rem;font-weight:800;line-height:1}
+.design-card h3{font-size:1rem;margin:3px 0 22px;line-height:1.15}
+.design-card p{max-width:350px;font-size:.77rem;line-height:1.3;margin:0}
+.design-card-plus{position:absolute;left:clamp(25px,2vw,40px);bottom:clamp(22px,1.8vw,36px);font-size:3rem;font-weight:200;line-height:1;transition:transform .35s,color .35s}
+.design-card:hover .design-card-plus,.design-card:focus-visible .design-card-plus{transform:rotate(90deg);color:#00e9f5}
+@media(max-width:1000px){
+  .design-page .site-header{height:86px}
+  .design-page .brand img{width:88px}
+  .design-page .site-nav{gap:16px}
+  .design-page .site-nav a{font-size:.66rem}
+  .design-hero h1{font-size:clamp(3.1rem,6.1vw,7.3rem)}
+  .design-ribbon{left:38%;width:88%;top:-3%}
+  .design-hero-lead{max-width:560px}
+}
+@media(max-width:700px){
+  .design-page .site-header{height:73px}
+  .design-page .header-inner{width:calc(100% - 36px)}
+  .design-page .brand img{width:66px}
+  .design-page .site-nav{top:73px}
+  .design-page .site-nav a{font-size:.9rem}
+  .design-hero{height:690px}
+  .design-ribbon{left:15%;top:35%;width:150%;max-width:none;opacity:.94}
+  .design-hero-content{padding:29px 0 32px;justify-content:flex-start}
+  .design-kicker{font-size:.68rem}
+  .design-hero h1{font-size:clamp(2.9rem,10.5vw,5rem);margin:65px 0 0;max-width:100%}
+  .design-hero-lead{font-size:clamp(1.1rem,4.2vw,1.25rem);margin-top:30px;padding-left:18px;max-width:95%;line-height:1.2}
+  .design-hero-lead br{display:none}
+  .design-hero .text-link{margin:auto 0 0 18px;font-size:.81rem;gap:22px}
+  .design-hero .text-link span{font-size:2.2rem}
+  .design-content{padding:22px 0 70px}
+  .design-process,.design-grid{width:calc(100% - 36px)}
+  .design-process{min-height:0;padding:34px 24px 50px;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%)}
+  .design-process h2{font-size:2.5rem}
+  .design-process h2 br,.design-process-lead br{display:none}
+  .design-process-lead{padding-left:18px;font-size:.9rem}
+  .design-grid{grid-template-columns:1fr;gap:18px;margin-top:18px}
+  .design-card{min-height:255px;padding:25px 22px}
+  .design-card h3{font-size:.8rem}
+  .design-card p{font-size:.68rem;max-width:290px}
+  .design-card-plus{left:22px;bottom:20px;font-size:2.4rem}
+}
+@media(prefers-reduced-motion:reduce){.design-ribbon{transition:none!important;transform:none!important;will-change:auto}}
+
+/* =====================================================================
+   Animazioni migliorate — 7 ottobre 2026
+   ===================================================================== */
+/* Ingresso dell'hero */
+@keyframes designRise{from{opacity:0;transform:translate3d(0,26px,0)}}
+@keyframes ribbonIn{from{opacity:0;scale:.94}}
+.design-hero-content>*{animation:designRise .95s var(--ease-out) backwards}
+.design-hero-content>:nth-child(1){animation-delay:.15s}
+.design-hero-content>:nth-child(2){animation-delay:.3s}
+.design-hero-content>:nth-child(3){animation-delay:.5s}
+.design-hero-content>:nth-child(4){animation-delay:.7s}
+.design-ribbon{animation:ribbonIn 1.8s var(--ease-out) backwards}
+
+/* Entrata allo scroll (attiva solo con la classe .js) */
+.js :is(.design-process>*,.design-card):not(.r-done){
+  opacity:0;transform:translate3d(0,26px,0);
+  transition:opacity var(--dur-slow) var(--ease-out) var(--d,0s),transform var(--dur-slow) var(--ease-out) var(--d,0s);
+}
+.js :is(.design-process>*,.design-card).is-in:not(.r-done){opacity:1;transform:none}
+
+/* Card: stessi tempi e stesso "＋" luminoso della homepage */
+.design-card{transition:transform var(--dur-base) var(--ease-out),background var(--dur-base),filter var(--dur-base)}
+.design-card h3,.design-card-no{transition:transform var(--dur-base) var(--ease-out),color var(--dur-base)}
+.design-card:hover h3,.design-card:focus-visible h3{transform:translateX(5px)}
+.design-card:hover .design-card-no,.design-card:focus-visible .design-card-no{transform:translateX(5px)}
+.design-card-plus{transition:transform var(--dur-base) var(--ease-out),color var(--dur-base),filter var(--dur-base)}
+.design-card:hover .design-card-plus,.design-card:focus-visible .design-card-plus{transform:rotate(90deg) scale(1.2);color:#00e9f5;filter:drop-shadow(0 0 8px rgba(0,233,245,.7))}
+@media(prefers-reduced-motion:reduce){.design-hero-content>*,.design-ribbon{animation:none}.design-card:hover h3,.design-card:hover .design-card-no{transform:none}}
+
+/* Fascia arancione: movimento fluido e ben visibile */
+@keyframes ribbonFlow{
+  0%,100%{transform:translate3d(0,0,0) rotate(-1.4deg) scale(1,1) skewY(0deg)}
+  22%{transform:translate3d(calc(-1.8% * var(--k,1)),calc(2.4% * var(--k,1)),0) rotate(calc(1.1deg * var(--k,1))) scale(1.06,1.025) skewY(calc(-1.2deg * var(--k,1)))}
+  50%{transform:translate3d(calc(-2.8% * var(--k,1)),calc(-2.8% * var(--k,1)),0) rotate(calc(2.4deg * var(--k,1))) scale(1.12,1.07) skewY(calc(.9deg * var(--k,1)))}
+  78%{transform:translate3d(calc(3% * var(--k,1)),calc(-1.2% * var(--k,1)),0) rotate(calc(-2.2deg * var(--k,1))) scale(1.04,1.1) skewY(calc(1.4deg * var(--k,1)))}
+}
+.design-ribbon{
+  animation:ribbonIn 1.8s var(--ease-out) backwards,ribbonFlow 15s ease-in-out 1.2s infinite;
+  translate:var(--tx,0px) var(--ty,0px);
+  transition:translate .9s var(--ease-out);
+}
+.design-hero.is-offscreen .design-ribbon{animation-play-state:paused}
+@media(max-width:1000px){.design-ribbon{--k:.75}}
+@media(max-width:700px){.design-ribbon{--k:.55}}
+@media(prefers-reduced-motion:reduce){.design-ribbon{animation:none!important;translate:none!important}}
+
+/* =====================================================================
+   Hero Progettazione con immagine "brand onde wireframe": le onde si disegnano all'apertura
+   ===================================================================== */
+@property --sweep{syntax:'<percentage>';inherits:false;initial-value:0%}
+@keyframes ribbonDraw{from{--sweep:0%;scale:1.06}to{--sweep:140%;scale:1}}
+@keyframes ribbonFlowBrand{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+  30%{transform:translate3d(calc(-1.2% * var(--k,1)),calc(1.4% * var(--k,1)),0) rotate(calc(.7deg * var(--k,1))) scale(1.02)}
+  65%{transform:translate3d(calc(1.1% * var(--k,1)),calc(-1.5% * var(--k,1)),0) rotate(calc(-.8deg * var(--k,1))) scale(1.035)}
+}
+.design-hero{background:#071a32}
+.design-hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,26,50,.8) 0,rgba(7,26,50,.5) 32%,transparent 56%)}
+.design-hero .design-ribbon{
+  left:23.4vw;right:auto;top:50%;margin-top:-27.7vw;width:97vw;height:auto;max-width:none;opacity:1;
+  transform-origin:50% 50%;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%),linear-gradient(to bottom,transparent 0,#000 16%),linear-gradient(98deg,#000 0,#000 calc(var(--sweep) - 16%),transparent var(--sweep),transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 22%),linear-gradient(to bottom,transparent 0,#000 16%),linear-gradient(98deg,#000 0,#000 calc(var(--sweep) - 16%),transparent var(--sweep),transparent 100%);
+  -webkit-mask-composite:source-in,source-in;mask-composite:intersect,intersect;
+  animation:ribbonDraw 3s cubic-bezier(.65,0,.25,1) .3s both,ribbonFlowBrand 18s ease-in-out 3.6s infinite;
+  --k:.6;
+}
+.design-hero .design-hero-lead{max-width:min(430px,38vw)}
+@media(max-width:1200px) and (min-width:1001px){
+  .design-hero .design-ribbon{left:35.4vw;width:88vw;margin-top:-25.1vw}
+}
+@media(max-width:1000px){
+  .design-hero{height:760px}
+  .design-hero::before{background:linear-gradient(180deg,rgba(7,26,50,.7) 0,transparent 55%)}
+  .design-hero .design-ribbon{left:0;width:100vw;top:auto;bottom:-1px;margin-top:0;--k:.5}
+  .design-hero .design-hero-lead{max-width:min(560px,86vw)}
+}
+@media(max-width:700px){
+  .design-hero{height:690px}
+  .design-hero .design-ribbon{left:-25.75vw;width:150vw;--k:.4}
+}
+@media(prefers-reduced-motion:reduce){.design-hero .design-ribbon{--sweep:140%;animation:none!important}}
+
+/* Rifiniture hero: distanza dal titolo, "D" non tagliata a 1100 px, testo rosso senza a capo forzato */
+.design-hero .design-ribbon{left:26.5vw}
+.design-hero .design-hero-lead br{display:none}
+@media(max-width:1200px) and (min-width:1001px){
+  .design-hero .design-ribbon{left:39vw;width:80vw;margin-top:-22.8vw}
+}
+@media(max-width:1000px){.design-hero .design-ribbon{left:0}}
+@media(max-width:700px){.design-hero .design-ribbon{left:-25.75vw}}
+
+/* =====================================================================
+   Hero Progettazione: blu pieno -> esplosione -> scritta BRAND -> onde che ruotano attorno
+   (livelli separati: onde senza scritta + scritta ferma)
+   ===================================================================== */
+@property --boom{syntax:'<percentage>';inherits:false;initial-value:0%}
+@keyframes artBoomReveal{from{--boom:0%}to{--boom:135%}}
+@keyframes artBoomScale{from{scale:.45;opacity:0}14%{opacity:1}to{scale:1;opacity:1}}
+@keyframes artSpin{to{rotate:360deg}}
+@keyframes brandPop{
+  0%{opacity:0;scale:1.7;filter:blur(18px) brightness(2.6) drop-shadow(0 0 30px #fff)}
+  55%{opacity:1;filter:blur(0) brightness(1.6) drop-shadow(0 0 24px rgba(255,255,255,.7))}
+  100%{opacity:1;scale:1;filter:blur(0) brightness(1) drop-shadow(0 0 10px rgba(255,255,255,.28))}
+}
+@keyframes boomFlash{0%{opacity:0;scale:.05}14%{opacity:.95}100%{opacity:0;scale:2.7}}
+@keyframes boomRing{0%{opacity:.95;scale:.08}100%{opacity:0;scale:1.9}}
+.design-hero .design-ribbon{
+  aspect-ratio:1659/948;height:auto;
+  -webkit-mask-image:none;mask-image:none;animation:none;
+}
+.design-ribbon::before,.design-ribbon::after{content:"";position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;z-index:2;opacity:0}
+.design-ribbon::before{width:46%;aspect-ratio:1;margin:-23% 0 0 -23%;
+  background:radial-gradient(circle,rgba(255,238,205,.95) 0,rgba(255,125,60,.55) 28%,rgba(220,40,120,.25) 52%,transparent 72%);
+  animation:boomFlash 1.3s cubic-bezier(.15,.7,.3,1) .35s both}
+.design-ribbon::after{width:40%;aspect-ratio:1;margin:-20% 0 0 -20%;
+  border:2px solid rgba(255,175,115,.85);box-shadow:0 0 30px rgba(255,100,80,.5),inset 0 0 30px rgba(255,100,80,.3);
+  animation:boomRing 1.5s cubic-bezier(.2,.6,.3,1) .4s both}
+.design-waves{position:absolute;inset:0;width:100%;height:100%;max-width:none;user-select:none;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%),radial-gradient(circle at 50% 50%,#000 calc(var(--boom) - 18%),transparent var(--boom));
+  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%),radial-gradient(circle at 50% 50%,#000 calc(var(--boom) - 18%),transparent var(--boom));
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+  animation:artBoomReveal 2.2s cubic-bezier(.2,.7,.2,1) .4s both,artBoomScale 2.2s cubic-bezier(.2,.8,.2,1) .4s both,artSpin 80s linear .4s infinite;
+  will-change:transform}
+.design-words{position:absolute;inset:0;z-index:1;pointer-events:none}
+.design-words .word{position:absolute;inset:0;opacity:0}
+.design-brandtext{position:absolute;left:50%;top:48%;translate:-50% -50%;width:28%;height:auto;max-width:none;user-select:none;pointer-events:none;
+  animation:brandPop 1.3s cubic-bezier(.2,.9,.2,1) .6s both}
+.design-words .w1 .design-brandtext{width:28%}
+.design-words .w2 .design-brandtext{width:28.5%}
+.design-words .w3 .design-brandtext{width:28.5%}
+.design-words .w4 .design-brandtext{width:29%}
+.design-words .w2 .design-brandtext,.design-words .w3 .design-brandtext,.design-words .w4 .design-brandtext{animation:none;filter:drop-shadow(0 0 10px rgba(255,255,255,.28))}
+/* alternanza: BRAND -> EDITORIALE -> PACKAGING -> COMUNICAZIONE (ciclo 12 s, 3 s a parola) */
+@keyframes wordSlot{0%{opacity:0;filter:blur(6px)}4%{opacity:1;filter:blur(0)}22%{opacity:1;filter:blur(0)}26%{opacity:0;filter:blur(6px)}100%{opacity:0;filter:blur(6px)}}
+@keyframes wordSlotFirst{0%{opacity:1;filter:blur(0)}22%{opacity:1;filter:blur(0)}26%{opacity:0;filter:blur(6px)}94%{opacity:0;filter:blur(6px)}100%{opacity:1;filter:blur(0)}}
+.design-words .w1{animation:wordSlotFirst 12s linear 2s infinite;opacity:1}
+.design-words .w2{animation:wordSlot 12s linear 4.64s infinite both}
+.design-words .w3{animation:wordSlot 12s linear 7.64s infinite both}
+.design-words .w4{animation:wordSlot 12s linear 10.64s infinite both}
+.design-hero.is-offscreen .design-ribbon,.design-hero.is-offscreen .design-ribbon::before,.design-hero.is-offscreen .design-ribbon::after,.design-hero.is-offscreen .design-waves,.design-hero.is-offscreen .design-brandtext,.design-hero.is-offscreen .design-words .word{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+  .design-waves{animation:none!important;--boom:135%;scale:1;opacity:1}
+  .design-brandtext{animation:none!important;opacity:1}
+  .design-words .word{animation:none!important;filter:none}.design-words .w1{opacity:1}.design-words .w2,.design-words .w3,.design-words .w4{display:none}
+  .design-ribbon::before,.design-ribbon::after{display:none}
+}
+
+/* Pulviscolo luminoso sulla fascia e sulla scritta */
+.design-sparkles{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.design-sparkles .spark{position:absolute;margin:-1px 0 0 -1px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,#fff 0,rgba(255,236,205,.95) 35%,rgba(255,170,120,.35) 65%,transparent 72%);
+  box-shadow:0 0 6px 1px rgba(255,205,170,.5);
+  animation:sparkLife 3.4s ease-in-out both}
+.design-sparkles .spark--star{border-radius:0;box-shadow:none;
+  background:
+    radial-gradient(circle,#fff 0,rgba(255,236,205,.9) 14%,rgba(255,170,120,.25) 34%,transparent 52%),
+    linear-gradient(90deg,transparent,rgba(255,240,220,.95) 50%,transparent) center/100% 1.5px no-repeat,
+    linear-gradient(0deg,transparent,rgba(255,240,220,.95) 50%,transparent) center/1.5px 100% no-repeat;
+  filter:drop-shadow(0 0 5px rgba(255,190,150,.7))}
+@keyframes sparkLife{0%{opacity:0;scale:.4;translate:0 0}30%{opacity:var(--o,.8);scale:1}70%{opacity:calc(var(--o,.8)*.6)}100%{opacity:0;scale:.7;translate:var(--dx) var(--dy)}}
+@media(prefers-reduced-motion:reduce){.design-sparkles{display:none}}
+
+/* Mobile verticale: fascia + BRAND un po' più in alto */
+@media(max-width:700px){.design-hero .design-ribbon{bottom:46px}}
+
+/* Smartphone in orizzontale: fascia con BRAND affiancata al titolo */
+@media(orientation:landscape) and (max-height:560px) and (max-width:1000px){
+  .design-hero{height:auto;min-height:max(380px,calc(100svh - 70px))}
+  .design-hero::before{background:linear-gradient(90deg,rgba(7,26,50,.7) 0,rgba(7,26,50,.35) 40%,transparent 62%)}
+  .design-hero .design-ribbon{--w:min(68vw,150svh);width:var(--w);left:calc(75vw - var(--w) / 2);top:50%;bottom:auto;margin-top:calc(var(--w) * -.2858)}
+  .design-hero .design-hero-content{padding:22px 0 26px}
+  .design-hero h1{font-size:clamp(2rem,6.2vw,3.6rem);margin:26px 0 0}
+  .design-hero .design-hero-lead{margin-top:18px;max-width:46vw;font-size:clamp(.95rem,2.1vw,1.2rem)}
+  .design-hero .text-link{margin-top:20px}
+}

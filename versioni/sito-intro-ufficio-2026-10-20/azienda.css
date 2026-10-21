@@ -1,0 +1,29 @@
+.az-photo{margin-top:clamp(28px,3vw,50px)}
+.az-ph-wide{aspect-ratio:21/9;width:100%}
+.az-story,.az-split{padding:clamp(40px,5vw,90px) 0}
+.az-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;color:#111d2d}
+.az-head h2,.az-copy h2{font-size:clamp(1.8rem,3.4vw,3.2rem);line-height:1;letter-spacing:-.02em;margin:0}
+.az-text{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,70px);color:#515761;line-height:1.5;max-width:1100px}
+.az-text p{margin:0}
+.az-timeline{list-style:none;margin:clamp(32px,4vw,60px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,28px);counter-reset:t}
+.az-timeline li{border-top:2px solid #111d2d;padding-top:14px;color:#515761;font-size:.9rem;line-height:1.4;display:flex;flex-direction:column;gap:6px}
+.az-timeline strong{color:#111d2d;font-size:1.25rem;letter-spacing:-.01em}
+.az-timeline li:first-child{border-color:#e62d39}.az-timeline li:first-child strong{color:#e62d39}
+.az-todo{opacity:.55;border-top-style:dashed!important}
+.az-values{background:#111d2d;color:#fff;padding:clamp(44px,5vw,90px) 0}
+.az-values .az-head{color:#fff}
+.az-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+.az-cards article{background:#17263b;padding:26px 24px 30px;clip-path:polygon(18px 0,100% 0,100% 100%,0 100%,0 18px)}
+.az-cards h3{margin:0 0 10px;font-size:1.05rem;color:#00efff;letter-spacing:.04em;text-transform:uppercase}
+.az-cards p{margin:0;color:#c7ced7;font-size:.9rem;line-height:1.45}
+.az-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,80px);align-items:center;scroll-margin-top:90px}
+.az-split--rev .az-copy{order:2}
+.az-copy{color:#111d2d}.az-copy h2{margin:6px 0 16px}
+.az-copy p{color:#515761;line-height:1.5;max-width:460px;margin:0 0 14px}
+.az-addr{font-weight:800;color:#111d2d!important}
+.az-imgs{display:grid;grid-template-columns:3fr 2fr;gap:clamp(12px,1.6vw,26px);min-width:0}
+.az-imgs .am-ph{aspect-ratio:4/3}
+@media(max-width:900px){.az-text,.az-split{grid-template-columns:1fr}.az-split--rev .az-copy{order:0}.az-timeline,.az-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.az-timeline,.az-cards,.az-imgs{grid-template-columns:1fr}.az-ph-wide{aspect-ratio:16/10}}
+.az-tags{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:8px}.az-tags li{border:1px solid #b9bec6;padding:7px 12px;font-size:.74rem;font-weight:700;letter-spacing:.03em;color:#111d2d}
+.az-copy .text-link{color:#111d2d}

@@ -1,0 +1,42 @@
+/* Titolo hero "stampato": lastre ciano/rossa + nero, bagliore finale */
+@property --hp{syntax:'<percentage>';inherits:false;initial-value:-12%}
+.hp-wrap{position:relative;max-width:100%}
+.hp-wrap h1{margin-top:0}
+.js .hero-content>.hp-wrap{opacity:1!important;transform:none!important}
+.hp-stack{display:grid}
+.hp-stack>*{grid-area:1/1}
+.hp-row{display:block;white-space:nowrap}
+.hp-plate{pointer-events:none;will-change:transform}
+.hp-plate .hp-row{--hp:-12%;padding-right:.1em;-webkit-mask-image:linear-gradient(90deg,#000 calc(var(--hp) - 10%),transparent var(--hp));mask-image:linear-gradient(90deg,#000 calc(var(--hp) - 10%),transparent var(--hp));opacity:1}
+.hp-cyan{color:#00efff;mix-blend-mode:screen;translate:-.16em .07em}
+.hp-red{color:#e62d39;mix-blend-mode:screen;translate:.16em -.07em}
+.hp-key{color:#fff}
+.hp-rough{filter:url(#hp-ink)}
+.hp-plate .dot{color:inherit}
+.hp-key .dot{color:#e62d39}
+/* prima dell'avvio il titolo è nascosto, ma resta leggibile se manca JS */
+.hp-ready .hp-plate .hp-row{--hp:-12%}
+.hp-go .hp-plate .hp-row{animation:hpWipe 1.05s cubic-bezier(.5,.05,.25,1) var(--d,0s) forwards}
+.hp-go .hp-plate .hp-row:nth-child(2){animation-delay:calc(var(--d,0s) + .38s)}
+.hp-go .hp-cyan{--d:0s;animation:hpRegC 2.6s cubic-bezier(.45,0,.2,1) forwards}
+.hp-go .hp-red{--d:.32s;animation:hpRegR 2.6s cubic-bezier(.45,0,.2,1) .32s forwards}
+.hp-go .hp-key{--d:.7s}
+.hp-go .hp-key:not(.hp-rough){animation:hpSettle 1.6s cubic-bezier(.2,.8,.2,1) .7s backwards}
+@keyframes hpSettle{from{translate:-.035em .015em}to{translate:0 0}}
+.hp-go .hp-rough{animation:hpRough .8s ease 1.9s forwards}
+@keyframes hpWipe{to{--hp:112%}}
+@keyframes hpRegC{0%{translate:-.16em .07em}30%{translate:-.2em .09em}62%{translate:-.05em .02em;opacity:1}100%{translate:0 0;opacity:0}}
+@keyframes hpRegR{0%{translate:.16em -.07em}30%{translate:.2em -.09em}62%{translate:.05em -.02em;opacity:1}100%{translate:0 0;opacity:0}}
+@keyframes hpRough{to{opacity:0}}
+.hp-glow{position:absolute;inset:-18% 0;pointer-events:none;background:radial-gradient(ellipse 48% 60% at 36% 52%,rgba(230,45,57,.5),rgba(230,45,57,.16) 45%,transparent 72%);opacity:0;mix-blend-mode:screen;z-index:-1}
+.hp-go .hp-glow{animation:hpBloom 2.8s ease 1.2s forwards}
+@keyframes hpBloom{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+.hp-reg{position:absolute;width:34px;height:34px;opacity:0;color:#00efff;pointer-events:none}
+.hp-reg::before,.hp-reg::after{content:"";position:absolute;background:currentColor}
+.hp-reg::before{left:50%;top:0;bottom:0;width:1px}.hp-reg::after{top:50%;left:0;right:0;height:1px}
+.hp-reg i{position:absolute;inset:8px;border:1px solid currentColor;border-radius:50%}
+.hp-go .hp-reg{animation:hpReg 2.4s ease forwards}
+.hp-r1{right:0;top:-6px}.hp-r2{left:-44px;bottom:-4px;color:#e62d39}
+@keyframes hpReg{0%{opacity:0}15%,60%{opacity:.8}100%{opacity:0}}
+@media(max-width:900px){.hp-reg{display:none}}
+@media(prefers-reduced-motion:reduce){.hp-plate .hp-row{--hp:112%!important;animation:none!important}.hp-cyan,.hp-red,.hp-rough,.hp-reg,.hp-glow{display:none}}
