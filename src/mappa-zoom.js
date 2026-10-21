@@ -68,6 +68,7 @@
 
   /* Rotellina: zoom sul punto del cursore */
   box.addEventListener('wheel', function (e) {
+    if (box.classList.contains('has-live')) return;
     e.preventDefault();
     var r = box.getBoundingClientRect(), d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
     zoomAt(e.clientX - r.left, e.clientY - r.top, z * Math.exp(-d * 0.0015));
@@ -76,6 +77,7 @@
   /* Trascinamento e pizzico */
   function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
   box.addEventListener('pointerdown', function (e) {
+    if (box.classList.contains('has-live')) return;
     if (e.button !== undefined && e.button > 0) return;
     pts[e.pointerId] = { x: e.clientX, y: e.clientY };
     try { box.setPointerCapture(e.pointerId); } catch (_) {}
@@ -105,6 +107,7 @@
 
   /* Doppio clic / doppio tocco: ingrandisce sul punto (oltre un certo livello torna alla vista iniziale) */
   box.addEventListener('dblclick', function (e) {
+    if (box.classList.contains('has-live')) return;
     var r = box.getBoundingClientRect();
     if (z >= 4) home(); else zoomAt(e.clientX - r.left, e.clientY - r.top, z * 2);
   });
@@ -112,6 +115,7 @@
   /* Tastiera */
   box.setAttribute('tabindex', '0');
   box.addEventListener('keydown', function (e) {
+    if (box.classList.contains('has-live')) return;
     var d = dims(), used = true;
     if (e.key === '+' || e.key === '=') zoomAt(d.w / 2, d.h / 2, z * 1.4);
     else if (e.key === '-' || e.key === '_') zoomAt(d.w / 2, d.h / 2, z / 1.4);

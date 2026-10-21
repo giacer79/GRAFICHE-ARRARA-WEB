@@ -729,3 +729,7 @@ Ordine cronologico, più recente in fondo.
 - `mappa-zoom.js` riscritto; `mappa-live.js` (Google Maps incorporata) non è più
   caricato dalla pagina per mantenere i colori e garantire pan/zoom ovunque;
   resta il pulsante "Apri in Google Maps".
+- Mappa reale opzionale (`mappa-tiles.js`): se la pagina è aperta da sola, online e un
+  riquadro di prova CARTO dark si carica, parte Leaflet + OpenStreetMap (stile scuro,
+  tinta blu da `contatti.css`) con pan/zoom illimitati; altrimenti resta la carta
+  vettoriale stilizzata. `mappa-zoom.js` si disattiva quando la mappa reale è attiva.
