@@ -1,5 +1,15 @@
 # Improvement plan — prossimi step consigliati
 
+## Dopo la sostituzione di `src/` — 21/10/2026
+
+- Aggiornare `CLAUDE.md`, `site-architecture.md`, `pages.md` e
+  `components.md` alla nuova struttura (`styles.css`, pagina Clienti,
+  niente `portfolio.html`).
+- Inserire il numero WhatsApp in `src/chat.js` (`WA_NUMBER`).
+- Ricontrollare `sitemap.xml` e i metadati SEO delle nuove pagine.
+- Sostituire i contenuti segnaposto della pagina Clienti con loghi e
+  immagini reali.
+
 ## Redesign home fedele a HOME.pdf — 28/08/2026 ✅ completato
 
 L'utente ha fornito `HOME.pdf` (mockup InDesign, pagina singola

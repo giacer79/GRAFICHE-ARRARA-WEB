@@ -691,3 +691,25 @@ Ordine cronologico, più recente in fondo.
   Nota: la versione rotta era già stata inclusa nel primo commit Git
   (`679fd68`); il commit non era ancora stato aggiornato con la
   correzione — da rifare al prossimo push richiesto dall'utente.
+
+- **21/10/2026 — Sostituito `src/` con la nuova versione del sito (ramo `intro-ufficio-2026-10-20`)**
+  - `src/` ora contiene la versione di lavoro di Gianluca (cartella
+    `homepage-interattiva-versione-claude/dist`): nuova intro con video
+    dell'ufficio (schermo con logo, dissolvenza), fascia "coming soon"
+    in WebGL (`intro-onda.js`) che compare dal basso e svanisce, logo
+    senza alone (`assets/intro-logo-pulito.mp4`), animazioni di
+    apertura pagina (`pagine.css/js`), pulsante "Chatta con noi"
+    (`chat.css/js`, numero WhatsApp ancora da inserire in `chat.js`),
+    mappa interattiva Google nei contatti (`mappa-live.js`,
+    `mappa-zoom.js`), pagina Clienti.
+  - Struttura diversa dalla precedente: `styles.css` al posto di
+    `style.css`, niente `portfolio.html` (il portfolio è una sezione
+    della home), nuove pagine `clienti.html` e
+    `progettazione-ambiti.html`. Mantenuti `robots.txt` e
+    `sitemap.xml` (nella sitemap `portfolio.html` → `clienti.html`).
+  - La vecchia `src/` resta consultabile nella storia Git (ramo
+    `main`). La regola "6 pagine con lo stesso `style.css`" in
+    `CLAUDE.md` e le pagine wiki `site-architecture.md`, `pages.md`,
+    `components.md` descrivono ancora la struttura precedente: da
+    aggiornare.
+
