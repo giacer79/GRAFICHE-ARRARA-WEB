@@ -1,5 +1,5 @@
 body.ambiti-page{background:#111d2d;color:#fff}
-.ct{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(28px,5vw,90px);padding:clamp(40px,5vw,90px) 0;align-items:start}
+.ct{padding:50px 0 clamp(40px,5vw,90px)}
 .ct-form{display:flex;flex-direction:column;gap:20px;color:#fff}
 .ct-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .ct-form label{display:flex;flex-direction:column;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;min-width:0}
@@ -120,3 +120,15 @@ body.ambiti-page{background:#111d2d;color:#fff}
 .ct-map-box.has-live{cursor:default}
 .ct-map-live .leaflet-container{background:#0d1726}
 .ct-map-live .pin{pointer-events:none}
+
+/* Dal design: box laterale allineato al primo campo e alla base di "Raccontaci il progetto" */
+.ct-form{gap:40px}
+.ct-top{display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,80px);align-items:stretch}
+.ct-fields{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.ct-fields>.ct-row:first-child label{line-height:14px}
+.ct-top>.ct-side{flex:1 1 320px;min-width:0;margin-top:22px;box-sizing:border-box}
+.ct-bottom{display:flex;flex-direction:column;gap:20px}
+.ct-bottom .am-cta{padding:11px 24px}
+@media(max-width:900px){.ct-top>.ct-side{order:-1;margin-top:0}}
+#am-title{font-size:clamp(2.6rem,6.74vw,6.1rem)}
+.ct-map-head .am-cta{clip-path:none}

@@ -48,7 +48,9 @@
     </section>
     <section class="ct wrap" aria-label="Richiesta di contatto">
       <form class="ct-form" id="ct-form" novalidate>
-        <div class="ct-row">
+        <div class="ct-top">
+          <div class="ct-fields">
+          <div class="ct-row">
           <label><span>Nome e cognome</span><input name="nome" autocomplete="name" required></label>
           <label><span>Azienda o ente <small>(facoltativo)</small></span><input name="azienda" autocomplete="organization"></label>
         </div>
@@ -68,12 +70,8 @@
           </select>
         </label>
         <label>Raccontaci il progetto<textarea name="msg" rows="6" required placeholder="Cosa vuoi realizzare, quantità indicative, formato, tempi desiderati…"></textarea></label>
-        <label class="ct-check"><input type="checkbox" name="privacy" required><span>Acconsento al trattamento dei miei dati per essere ricontattato in merito a questa richiesta.</span></label>
-        <p class="ct-error" id="ct-error" role="alert" hidden></p>
-        <div class="ct-actions"><button class="am-cta am-cta--big" type="submit">INVIA LA RICHIESTA <span aria-hidden="true">↗</span></button></div>
-        <p class="ct-note">Inviando si apre il tuo programma di posta con il messaggio già compilato: ti basta premere invio.</p>
-      </form>
-      <aside class="ct-side" aria-label="Altri modi per contattarci">
+          </div>
+          <aside class="ct-side" aria-label="Altri modi per contattarci">
         <h2>Preferisci scriverci?</h2>
         <p>Puoi inviarci direttamente una mail: leggiamo tutto e rispondiamo il prima possibile.</p>
         <a class="am-cta" id="ct-mail" href="mailto:info@grafichearrara.com?subject=Parliamo%20di%20un%20progetto">INVIACI UNA MAIL <span aria-hidden="true">＋</span></a>
@@ -82,6 +80,14 @@
           <dt>Sede</dt><dd>Viale Sforza 125<br>Abbiategrasso (MI)</dd>
         </dl>
       </aside>
+        </div>
+        <div class="ct-bottom">
+        <label class="ct-check"><input type="checkbox" name="privacy" required><span>Acconsento al trattamento dei miei dati per essere ricontattato in merito a questa richiesta.</span></label>
+        <p class="ct-error" id="ct-error" role="alert" hidden></p>
+        <div class="ct-actions"><button class="am-cta am-cta--big" type="submit">INVIA LA RICHIESTA <span aria-hidden="true">↗</span></button></div>
+        <p class="ct-note">Inviando si apre il tuo programma di posta con il messaggio già compilato: ti basta premere invio.</p>
+        </div>
+      </form>
     </section>
     <section class="ct-map wrap" aria-labelledby="map-t">
       <div class="ct-map-head"><div><span class="am-no">/ DOVE SIAMO</span><h2 id="map-t">Vieni a trovarci<span class="dot">.</span></h2></div><a class="am-cta" href="https://www.google.com/maps/search/?api=1&amp;query=45.3833514%2C8.9131348" target="_blank" rel="noopener">APRI IN GOOGLE MAPS <span aria-hidden="true">↗</span></a></div>

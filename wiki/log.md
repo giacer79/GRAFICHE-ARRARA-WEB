@@ -740,3 +740,10 @@ Ordine cronologico, più recente in fondo.
   `.ct-side` di Contatti) usano lo sfondo del blocco "Processo" di Progettazione:
   grigio #d1d2d0 puntinato con sfumature verde/acqua e angolo in basso a destra tagliato.
   Regola unica in fondo a `pagine.css`. Il form di Contatti resta scuro.
+
+## 21/10/2026 — Pagina Contatti: modifiche dal design riportate nel sito
+- Il box "Preferisci scriverci?" parte dalla stessa altezza del campo "Nome e cognome" e finisce
+  alla base di "Raccontaci il progetto" (form e box dentro `.ct-top`; consenso/pulsante/nota in `.ct-bottom`).
+- Titolo "PARLIAMONE." leggermente più piccolo (6,74vw), pulsante "Invia la richiesta" più basso,
+  bordo del pulsante "Apri in Google Maps" chiuso (niente smusso), padding superiore della sezione 50px.
+- Non riportati: riquadro mappa in posizione assoluta con misure fisse (non responsive).
