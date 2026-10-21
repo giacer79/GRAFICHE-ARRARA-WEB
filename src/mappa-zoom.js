@@ -1,41 +1,52 @@
-/* Mappa della sede: zoom e spostamento (rotellina con Ctrl, trascinamento, pizzico, pulsanti, tastiera) */
+/* Mappa della sede: carta vettoriale scorrevole e zoomabile.
+   Trascinamento col mouse o col dito, rotellina / pizzico per lo zoom, doppio clic, pulsanti e tastiera.
+   Pan e zoom cambiano il viewBox dell'SVG: i tratti restano nitidi a ogni ingrandimento. */
 (function () {
   var box = document.getElementById('map');
   if (!box) return;
-  var img = box.querySelector('.ct-map-img'), pin = box.querySelector('.pin');
-  if (!img) return;
-  var pan = document.createElement('div');
-  pan.className = 'ct-map-pan';
-  box.insertBefore(pan, box.firstChild);
-  pan.appendChild(img);
-  if (pin) pan.appendChild(pin);
+  var svg = box.querySelector('svg.ct-map-img'), pin = box.querySelector('.pin');
+  if (!svg) return;
 
-  var MIN = 1, MAX = 6, z = 1, tx = 0, ty = 0;
-  var pts = {}, last = null, pinch = null, moved = false;
+  var WX = 1400, WY = 625;            /* mezza larghezza / altezza della carta (unità SVG) */
+  var BASE_W = 1120, BASE_H = 500;    /* vista iniziale */
+  var MAXZ = 7;
+  var cx = 0, cy = 0, z = 1, U0 = 1, MINZ = 0.4;
+  var pts = {}, pinch = null;
 
-  function size() { return { w: box.clientWidth, h: box.clientHeight }; }
+  function dims() { return { w: box.clientWidth, h: box.clientHeight }; }
+  function units() { var d = dims(); U0 = Math.max(BASE_W / d.w, BASE_H / d.h); MINZ = Math.max(d.w * U0 / (2 * WX), d.h * U0 / (2 * WY)); }
   function clamp() {
-    var s = size();
-    z = Math.min(MAX, Math.max(MIN, z));
-    tx = Math.min(0, Math.max(s.w * (1 - z), tx));
-    ty = Math.min(0, Math.max(s.h * (1 - z), ty));
+    var d = dims(), u = U0 / z;
+    z = Math.min(MAXZ, Math.max(MINZ, z)); u = U0 / z;
+    var hw = d.w * u / 2, hh = d.h * u / 2;
+    cx = Math.min(WX - hw, Math.max(-WX + hw, cx));
+    cy = Math.min(WY - hh, Math.max(-WY + hh, cy));
   }
+  function atHome() { return Math.abs(z - 1) < 0.002 && Math.abs(cx) < 0.5 && Math.abs(cy) < 0.5; }
   function apply() {
-    clamp();
-    pan.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + z + ')';
-    pan.style.setProperty('--zi', (1 / z).toFixed(4));
-    box.classList.toggle('is-zoomed', z > 1.001);
-    btnIn.disabled = z >= MAX - 0.001;
-    btnOut.disabled = z <= MIN + 0.001;
-    btnReset.hidden = z <= MIN + 0.001;
+    var d = dims(); if (!d.w) return;
+    units(); clamp();
+    var u = U0 / z, vw = d.w * u, vh = d.h * u;
+    svg.setAttribute('viewBox', (cx - vw / 2) + ' ' + (cy - vh / 2) + ' ' + vw + ' ' + vh);
+    if (pin) { pin.style.left = ((0 - (cx - vw / 2)) / vw * 100) + '%'; pin.style.top = ((0 - (cy - vh / 2)) / vh * 100) + '%'; }
+    btnIn.disabled = z >= MAXZ - 0.001;
+    btnOut.disabled = z <= MINZ + 0.001;
+    btnReset.hidden = atHome();
   }
+  /* zoom mantenendo fermo il punto sotto il cursore (px, py in pixel della cornice) */
   function zoomAt(px, py, nz) {
-    nz = Math.min(MAX, Math.max(MIN, nz));
-    var wx = (px - tx) / z, wy = (py - ty) / z;
-    z = nz; tx = px - wx * z; ty = py - wy * z;
+    var d = dims(); units();
+    nz = Math.min(MAXZ, Math.max(MINZ, nz));
+    var u = U0 / z, wx = cx + (px - d.w / 2) * u, wy = cy + (py - d.h / 2) * u;
+    z = nz; u = U0 / z;
+    cx = wx - (px - d.w / 2) * u; cy = wy - (py - d.h / 2) * u;
     apply();
   }
-  function center() { var s = size(); return { x: s.w / 2, y: s.h / 2 }; }
+  function home() { z = 1; cx = 0; cy = 0; apply(); }
+  function panBy(dx, dy) { var u = U0 / z; cx -= dx * u; cy -= dy * u; apply(); }
+
+  /* Spilla: posizione assoluta nella cornice, si sposta con la carta */
+  if (pin) pin.style.margin = '-22px 0 0 -22px';
 
   /* Pulsanti */
   var ctr = document.createElement('div');
@@ -47,28 +58,19 @@
   var btnIn = ctr.querySelector('[data-z=in]'), btnOut = ctr.querySelector('[data-z=out]'), btnReset = ctr.querySelector('[data-z=reset]');
   ctr.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    var c = center();
-    if (b.dataset.z === 'in') zoomAt(c.x, c.y, z * 1.6);
-    else if (b.dataset.z === 'out') zoomAt(c.x, c.y, z / 1.6);
-    else { z = 1; tx = 0; ty = 0; apply(); }
+    var d = dims();
+    if (b.dataset.z === 'in') zoomAt(d.w / 2, d.h / 2, z * 1.6);
+    else if (b.dataset.z === 'out') zoomAt(d.w / 2, d.h / 2, z / 1.6);
+    else home();
   });
   ctr.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
   ctr.addEventListener('dblclick', function (e) { e.stopPropagation(); });
 
-  /* Suggerimento per la rotellina */
-  var hint = document.createElement('div');
-  hint.className = 'ct-map-hint'; hint.setAttribute('aria-hidden', 'true');
-  hint.textContent = (/Mac|iPhone|iPad/.test(navigator.platform) ? '⌘' : 'Ctrl') + ' + scorri per zoomare';
-  box.appendChild(hint);
-  var hintTimer;
-  function showHint() { hint.classList.add('on'); clearTimeout(hintTimer); hintTimer = setTimeout(function () { hint.classList.remove('on'); }, 1400); }
-
-  /* Rotellina: zoom solo con Ctrl/Cmd, altrimenti scorre la pagina */
+  /* Rotellina: zoom sul punto del cursore */
   box.addEventListener('wheel', function (e) {
-    if (!(e.ctrlKey || e.metaKey)) { showHint(); return; }
     e.preventDefault();
-    var r = box.getBoundingClientRect();
-    zoomAt(e.clientX - r.left, e.clientY - r.top, z * Math.exp(-e.deltaY * 0.0013));
+    var r = box.getBoundingClientRect(), d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    zoomAt(e.clientX - r.left, e.clientY - r.top, z * Math.exp(-d * 0.0015));
   }, { passive: false });
 
   /* Trascinamento e pizzico */
@@ -78,8 +80,7 @@
     pts[e.pointerId] = { x: e.clientX, y: e.clientY };
     try { box.setPointerCapture(e.pointerId); } catch (_) {}
     var ids = Object.keys(pts);
-    if (ids.length === 2) { pinch = { d: dist(pts[ids[0]], pts[ids[1]]), z: z }; }
-    last = { x: e.clientX, y: e.clientY }; moved = false;
+    if (ids.length === 2) pinch = { d: dist(pts[ids[0]], pts[ids[1]]), z: z };
     box.classList.add('is-drag');
   });
   box.addEventListener('pointermove', function (e) {
@@ -90,11 +91,9 @@
     if (ids.length === 2 && pinch) {
       var a = pts[ids[0]], b = pts[ids[1]], r = box.getBoundingClientRect();
       zoomAt((a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top, pinch.z * dist(a, b) / pinch.d);
-      moved = true; return;
+      return;
     }
-    if (ids.length === 1 && z > 1.001) {
-      tx += e.clientX - prev.x; ty += e.clientY - prev.y; moved = true; apply();
-    }
+    if (ids.length === 1) panBy(e.clientX - prev.x, e.clientY - prev.y);
   });
   function end(e) {
     delete pts[e.pointerId];
@@ -104,28 +103,28 @@
   box.addEventListener('pointerup', end);
   box.addEventListener('pointercancel', end);
 
-  /* Doppio clic / doppio tocco: ingrandisce sul punto */
+  /* Doppio clic / doppio tocco: ingrandisce sul punto (oltre un certo livello torna alla vista iniziale) */
   box.addEventListener('dblclick', function (e) {
     var r = box.getBoundingClientRect();
-    zoomAt(e.clientX - r.left, e.clientY - r.top, z > 1.001 && z >= 2.9 ? 1 : z * 2);
-    if (z <= 1.001) { tx = 0; ty = 0; apply(); }
+    if (z >= 4) home(); else zoomAt(e.clientX - r.left, e.clientY - r.top, z * 2);
   });
 
   /* Tastiera */
   box.setAttribute('tabindex', '0');
   box.addEventListener('keydown', function (e) {
-    var step = 60, c = center(), used = true;
-    if (e.key === '+' || e.key === '=') zoomAt(c.x, c.y, z * 1.4);
-    else if (e.key === '-' || e.key === '_') zoomAt(c.x, c.y, z / 1.4);
-    else if (e.key === '0') { z = 1; tx = 0; ty = 0; apply(); }
-    else if (e.key === 'ArrowLeft') { tx += step; apply(); }
-    else if (e.key === 'ArrowRight') { tx -= step; apply(); }
-    else if (e.key === 'ArrowUp') { ty += step; apply(); }
-    else if (e.key === 'ArrowDown') { ty -= step; apply(); }
+    var d = dims(), used = true;
+    if (e.key === '+' || e.key === '=') zoomAt(d.w / 2, d.h / 2, z * 1.4);
+    else if (e.key === '-' || e.key === '_') zoomAt(d.w / 2, d.h / 2, z / 1.4);
+    else if (e.key === '0') home();
+    else if (e.key === 'ArrowLeft') panBy(60, 0);
+    else if (e.key === 'ArrowRight') panBy(-60, 0);
+    else if (e.key === 'ArrowUp') panBy(0, 60);
+    else if (e.key === 'ArrowDown') panBy(0, -60);
     else used = false;
     if (used) e.preventDefault();
   });
 
   window.addEventListener('resize', apply);
+  box.classList.add('is-zoomed');
   apply();
 })();

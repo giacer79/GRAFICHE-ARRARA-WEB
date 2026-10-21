@@ -108,3 +108,9 @@ body.ambiti-page{background:#111d2d;color:#fff}
 
 /* Google Maps incorporata, in tono scuro come la home */
 .ct-map-live iframe{display:block;width:100%;height:100%;border:0;background:#0d1726;filter:invert(.92) hue-rotate(180deg) saturate(.85) contrast(.95) brightness(.95)}
+
+/* Mappa scorrevole: carta vettoriale più grande della cornice, si trascina sempre e si zooma con la rotellina */
+.ct-map-box{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.ct-map-box.is-drag{cursor:grabbing}
+.ct-map-box>svg.ct-map-img{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.ct-map-box>.pin{pointer-events:none}

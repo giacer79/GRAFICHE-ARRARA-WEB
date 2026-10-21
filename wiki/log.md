@@ -720,3 +720,12 @@ Ordine cronologico, più recente in fondo.
     Ogni riquadro è un `<li class="cl-logo"><span class="cl-logo-ph">`:
     per inserire un logo basta mettere un `<img>` al posto dello span.
 
+
+## 21/10/2026 — Mappa contatti scorrevole e zoomabile
+- La mappa stilizzata (blu scuro con tratti azzurri) è ora una carta vettoriale
+  più grande della cornice (2800×1250 unità, SVG inline in `contatti.html`):
+  si trascina sempre (mouse/dito), si zooma con rotellina, pizzico, doppio clic,
+  pulsanti `+ − ⌂` e tastiera. Pan/zoom cambiano il `viewBox` → tratti nitidi.
+- `mappa-zoom.js` riscritto; `mappa-live.js` (Google Maps incorporata) non è più
+  caricato dalla pagina per mantenere i colori e garantire pan/zoom ovunque;
+  resta il pulsante "Apri in Google Maps".
