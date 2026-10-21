@@ -713,3 +713,10 @@ Ordine cronologico, più recente in fondo.
     `components.md` descrivono ancora la struttura precedente: da
     aggiornare.
 
+- **21/10/2026 — Pagina Clienti: griglia segnaposto loghi**
+  - In `clienti.html` i 5 segnaposto con nomi sono stati sostituiti da
+    una griglia di 12 riquadri "Logo 1 … Logo 12" (4 colonne, 3 sotto
+    i 1200px, 2 sotto i 700px; stile in fondo a `clienti.css`).
+    Ogni riquadro è un `<li class="cl-logo"><span class="cl-logo-ph">`:
+    per inserire un logo basta mettere un `<img>` al posto dello span.
+

@@ -104,3 +104,11 @@ html{overflow-x:clip}
 .cl-logo-ph small{display:block;margin-top:.5em;font-family:Arial,sans-serif;font-weight:700;font-size:.28em;letter-spacing:.3em;color:#515761}
 @media(max-width:1200px){.cl-logo,.cl-logo:nth-child(n+4){grid-column:span 3}.cl-logo:last-child{grid-column:1/-1}}
 @media(max-width:700px){.cl-logos{grid-template-columns:1fr 1fr}.cl-logo,.cl-logo:nth-child(n+4){grid-column:auto}.cl-logo:last-child{grid-column:1/-1}}
+
+/* Griglia segnaposto loghi: 4 colonne uguali (Logo 1, Logo 2, ...) */
+.cl-logos{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cl-logo,.cl-logo:nth-child(n+4){grid-column:auto}
+.cl-logo:last-child{grid-column:auto}
+.cl-logo-ph{font-size:clamp(1.05rem,1.7vw,1.7rem);letter-spacing:-.01em}
+@media(max-width:1200px){.cl-logos{grid-template-columns:repeat(3,minmax(0,1fr))}.cl-logo,.cl-logo:nth-child(n+4),.cl-logo:last-child{grid-column:auto}}
+@media(max-width:700px){.cl-logos{grid-template-columns:1fr 1fr}.cl-logo,.cl-logo:nth-child(n+4),.cl-logo:last-child{grid-column:auto}}
