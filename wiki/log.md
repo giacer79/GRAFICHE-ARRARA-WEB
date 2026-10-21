@@ -730,6 +730,6 @@ Ordine cronologico, più recente in fondo.
   caricato dalla pagina per mantenere i colori e garantire pan/zoom ovunque;
   resta il pulsante "Apri in Google Maps".
 - Mappa reale opzionale (`mappa-tiles.js`): se la pagina è aperta da sola, online e un
-  riquadro di prova CARTO dark si carica, parte Leaflet + OpenStreetMap (stile scuro,
+  riquadro di prova Esri Dark Gray si carica (CARTO dark_all ora mostra "API KEY REQUIRED"), parte Leaflet + Esri Dark Gray con etichette (stile scuro,
   tinta blu da `contatti.css`) con pan/zoom illimitati; altrimenti resta la carta
   vettoriale stilizzata. `mappa-zoom.js` si disattiva quando la mappa reale è attiva.
