@@ -110,6 +110,8 @@ body.intro-active{overflow:hidden}
 
 .site-intro[hidden]{display:none}
 .intro-skip{position:absolute;right:clamp(18px,4vw,56px);bottom:clamp(18px,4vw,48px);z-index:2;padding:11px 18px;background:rgba(2,2,2,.7);color:#fff;border:1px solid rgba(255,255,255,.75);font-size:.75rem;font-weight:800;letter-spacing:.08em;cursor:pointer;transition:background .2s,border-color .2s}
+.intro-sound{position:absolute;left:clamp(18px,4vw,56px);bottom:clamp(18px,4vw,48px);z-index:2;display:inline-flex;align-items:center;gap:9px;padding:11px 16px;background:rgba(2,2,2,.7);color:#fff;border:1px solid rgba(255,255,255,.75);font:800 .75rem/1 inherit;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s}
+.intro-sound:hover,.intro-sound:focus-visible{background:#e62d39;border-color:#e62d39;outline:2px solid #fff;outline-offset:3px}
 .intro-skip:hover,.intro-skip:focus-visible{background:#e62d39;border-color:#e62d39;outline:2px solid #fff;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.site-intro{display:none!important}}
 

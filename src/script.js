@@ -73,6 +73,7 @@ if (intro && !intro.hidden) {
     finished = true;
     video.pause();
     if (window.__arraraWave) window.__arraraWave.stop();
+    if (window.__arraraSound) window.__arraraSound.stop();
     try { sessionStorage.setItem('arraraIntroShown', '1'); } catch (_) {}
     intro.classList.add('is-done');
     initReveal(true);
@@ -112,10 +113,12 @@ if (intro && !intro.hidden) {
     if (variant === 'soft') { /* logo senza alone rosso, per fondersi con il blu del fondo */ video.src = 'assets/intro-logo-pulito.mp4'; video.load(); }
     const wave = window.arraraWaveIntro ? window.arraraWaveIntro(intro) : null;
     window.__arraraWave = wave;
+    const sound = window.arraraIntroAudio ? window.arraraIntroAudio(intro) : null;
+    window.__arraraSound = sound;
     let waveOn = false;
     let started = false;
     const startLogo = () => {
-      if (started) return; started = true; intro.classList.remove('office-wait');
+      if (started) return; started = true; intro.classList.remove('office-wait'); if (sound) sound.chime();
       if (variant === 'soft') {
         /* salta la parte della lampadina: parte dal logo (circa 4,0 s) */
         intro.classList.add('skip-bulb');
@@ -124,7 +127,7 @@ if (intro && !intro.hidden) {
     office.addEventListener('timeupdate', () => {
       if (office.currentTime >= 8.7) {
         office.classList.add('is-out');
-        if (wave && !waveOn) { waveOn = true; wave.start(); setTimeout(startLogo, 2300); }
+        if (wave && !waveOn) { waveOn = true; wave.start(); if (sound) sound.whoosh(); setTimeout(startLogo, 2300); }
       }
       if (!wave && office.currentTime >= 9.0) startLogo();
     });

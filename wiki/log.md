@@ -747,3 +747,7 @@ Ordine cronologico, più recente in fondo.
 - Titolo "PARLIAMONE." leggermente più piccolo (6,74vw), pulsante "Invia la richiesta" più basso,
   bordo del pulsante "Apri in Google Maps" chiuso (niente smusso), padding superiore della sezione 50px.
 - Non riportati: riquadro mappa in posizione assoluta con misure fisse (non responsive).
+
+## 2026-10-21 — Audio nell'intro
+- Aggiunto `intro-audio.js`: colonna sonora sintetizzata (Web Audio, nessun file): ambiente d'ufficio, sweep all'uscita dal video, rintocco sul logo.
+- Pulsante Audio/Muto in basso a sinistra nell'intro (scelta ricordata per la sessione). I browser bloccano l'audio senza gesto: parte al primo clic/tasto ("Tocca per audio").
