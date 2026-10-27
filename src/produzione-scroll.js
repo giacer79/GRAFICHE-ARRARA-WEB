@@ -9,6 +9,7 @@
   function add(el, extra, mode) { if (el) targets.push({ el: el, dir: 1, delay: extra || 0, mode: mode || 'fly' }); }
   items.forEach(function (it) {
     it.classList.remove('pg-reveal');            // niente doppia animazione
+    if (it.id === 'scatole') { var bx = it.querySelector('.bx-box'); if (bx) targets.push({ el: bx, stage: it.querySelector('.bx-stage'), dir: 1, delay: 0, mode: 'box' }); return; }
     add(it.querySelector(':scope > .am-copy'));
     add(it.querySelector(':scope > .am-media'), .08, 'open');
     var blocks = it.querySelectorAll(':scope > .tb-block');
@@ -30,6 +31,7 @@
     vw = innerWidth; vh = innerHeight;
     targets.forEach(function (t) { t.el.style.transform = 'none'; t.el.style.clipPath = 'none'; });
     targets.forEach(function (t) {
+      if (t.mode === 'box') return;
       var r = t.el.getBoundingClientRect();
       t.dir = (r.left + r.width / 2) < vw / 2 ? -1 : 1;
       if (t.el.classList.contains('wrap')) t.dir = 0;   // fascia finale: sale dal basso
@@ -40,6 +42,16 @@
   function update() {
     ticking = false;
     targets.forEach(function (t) {
+      if (t.mode === 'box') {   // scatola: entra da destra ruotando, con ombra che si definisce atterrando; coordinata allo scroll
+        var sr = t.stage.getBoundingClientRect();
+        var pb = Math.max(0, Math.min(1, (vh * 0.9 - sr.top) / (vh * 0.7)));
+        var eb = ease(pb), inv = 1 - eb;
+        var x = inv * (vw * 0.55), y = inv * 60;
+        t.el.style.opacity = Math.min(1, eb * 4).toFixed(3);
+        t.el.style.transform = eb >= 0.999 ? 'none' : 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (-inv * 300).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';
+        t.el.style.filter = 'drop-shadow(0 ' + (6 + 20 * eb).toFixed(1) + 'px ' + (8 + 24 * eb).toFixed(1) + 'px rgba(10,20,25,' + (0.18 + 0.2 * eb).toFixed(2) + '))';
+        return;
+      }
       var r = t.el.getBoundingClientRect();
       // r.top non dipende dal translateX: il progresso resta stabile
       var start = vh * 0.98 - t.delay * vh * 0.25;
