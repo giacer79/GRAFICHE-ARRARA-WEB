@@ -778,3 +778,4 @@ Ordine cronologico, più recente in fondo.
 - Scatole: le due scatole non si sovrappongono (posizionate in modo assoluto: Pastel a destra al 54%, Arrara in basso a sinistra al 24%); la scatolina bianca entra in diagonale da fuori in alto a sinistra dello schermo.
 - Scatole: entrambe le scatole ingrandite (Pastel 62%, Arrara 33% dell'area) e molto più vicine a fine movimento, senza sovrapporsi; area più alta.
 - Scatole: scatola bianca Arrara rigenerata con spessore, scanalatura coperchio/base, spigoli smussati e ombra di contatto più realistici (scatola-arrara.webp); larghezza 36%.
+- Scatole: la scatola bianca entra da destra (dal basso a destra, sotto la Pastel) partendo dopo la Pastel, quindi movimento più lungo e lento; verificato per simulazione che non si sovrappongono mai durante lo scroll (desktop e mobile).
