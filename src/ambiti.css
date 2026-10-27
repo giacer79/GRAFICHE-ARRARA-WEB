@@ -47,3 +47,8 @@
 .am-media--one{position:relative}
 .am-one{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 @media(max-width:900px){.am-one{height:auto;aspect-ratio:3/2}}
+/* Piccolo formato: immagine avvicinata al box di sinistra, leggermente allargata (deformata) per riempire lo spazio */
+@media(min-width:901px){
+  .am-media--one{margin-left:calc(-1*(clamp(24px,4vw,80px) - 14px))}
+  .am-one{object-fit:fill}
+}
