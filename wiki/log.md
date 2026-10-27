@@ -771,3 +771,4 @@ Ordine cronologico, più recente in fondo.
 - `produzione-scroll.js`: alcuni elementi (immagine principale di Piccolo formato, gallerie Tabloid e Cartotecnica) non volano dai lati ma si aprono in orizzontale da una linea centrale (clip-path inset 50% → 0), sempre legati allo scroll.
 - Apertura orizzontale: parte solo quando il fondo dell'elemento è già entrato nello schermo (non appena compare il bordo alto).
 - Scatole e packaging: niente ingresso di testo/immagini; palco grigio (`.bx-stage`) con la scatola Pastel (`assets/scatola-pastel.webp`, trasparente) che entra da destra ruotando (-300° → 0) e si ingrandisce, con ombra (drop-shadow) che si definisce atterrando; legata allo scroll (`mode:'box'` in `produzione-scroll.js`). Il box di testo resta fermo.
+- Scatole: il box di testo a sinistra compare solo a rotazione completata (classe `box-done` sulla sezione, fade+slide da sinistra); scatola ingrandita (84% del palco, max 600 px; palco più alto).
