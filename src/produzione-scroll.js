@@ -49,7 +49,7 @@
         t.item.classList.toggle('box-done', eb >= 0.999);   // il box di testo compare solo a rotazione completata
         var x = inv * (vw * 0.55), y = inv * 60;
         t.el.style.opacity = Math.min(1, eb * 4).toFixed(3);
-        t.el.style.transform = eb >= 0.999 ? 'none' : 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (-inv * 300).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';
+        t.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (20 - inv * 300).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';   // a fine corsa resta ruotata di 20°
         t.el.style.filter = 'drop-shadow(0 ' + (6 + 20 * eb).toFixed(1) + 'px ' + (8 + 24 * eb).toFixed(1) + 'px rgba(10,20,25,' + (0.18 + 0.2 * eb).toFixed(2) + '))';
         return;
       }
