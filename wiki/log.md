@@ -761,3 +761,6 @@ Ordine cronologico, più recente in fondo.
 - Piccolo formato: immagine avvicinata al box di sinistra (gap 14 px su desktop), leggermente allargata; altezza sempre pari al box.
 - Piccolo formato: nuova sotto-categoria BIGLIETTI DA VISITA sopra Tabloid (`#biglietti-da-visita`, 3 immagini 16:9 `assets/biglietti-1..3.webp`, testo SEO nascosto come per Tabloid).
 - Piccolo formato: nuova sotto-categoria CARTOTECNICA sotto Tabloid (`#cartotecnica`, 2 immagini 16:9: calendari da tavolo e quaderni The Abbiàtenser; testo SEO nascosto).
+
+## 2026-10-27 — Bagliori verdi animati nei pannelli
+- In `pagine.css`: pseudo-elemento `::before` con 3 macchie verdi sfocate (blur 18px, multiply) animate da `@keyframes pnGlow` (14–18 s) in tutti i pannelli di testo; disattivato con prefers-reduced-motion.

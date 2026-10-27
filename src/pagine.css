@@ -42,3 +42,21 @@
 .ct-side dt{color:#e62d39}
 .ct-side dd{color:#111d2d}
 @media(max-width:560px){.am-copy,.az-copy,.az-story,.az-values>.wrap,.cl-cta,.ct-side{padding:26px 22px 40px}}
+
+/* Bagliori verdi che si muovono lentamente nei pannelli di testo */
+.am-copy::before,.az-copy::before,.az-story::before,.az-values>.wrap::before,.cl-cta::before,.ct-side::before{
+  content:"";position:absolute;inset:-25%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(112,214,150,.55) 0,transparent 32%) 22% 30%/62% 62% no-repeat,
+    radial-gradient(circle at 50% 50%,rgba(70,196,168,.45) 0,transparent 30%) 78% 24%/58% 58% no-repeat,
+    radial-gradient(circle at 50% 50%,rgba(190,232,120,.5) 0,transparent 30%) 60% 82%/64% 64% no-repeat;
+  filter:blur(18px);mix-blend-mode:multiply;opacity:.9;
+  animation:pnGlow 14s ease-in-out infinite alternate;will-change:transform}
+.am-copy>*,.az-copy>*,.az-story>*,.az-values>.wrap>*,.cl-cta>*,.ct-side>*{position:relative;z-index:1}
+@keyframes pnGlow{
+  0%{transform:translate3d(-9%,-6%,0) rotate(0deg) scale(1)}
+  35%{transform:translate3d(8%,5%,0) rotate(14deg) scale(1.12)}
+  70%{transform:translate3d(-4%,9%,0) rotate(-10deg) scale(.96)}
+  100%{transform:translate3d(9%,-7%,0) rotate(8deg) scale(1.08)}}
+.am-item:nth-child(even) .am-copy::before,.az-story::before{animation-duration:18s;animation-direction:alternate-reverse}
+@media(prefers-reduced-motion:reduce){.am-copy::before,.az-copy::before,.az-story::before,.az-values>.wrap::before,.cl-cta::before,.ct-side::before{animation:none}}
