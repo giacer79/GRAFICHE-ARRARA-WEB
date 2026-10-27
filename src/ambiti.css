@@ -52,3 +52,8 @@
   .am-media--one{margin-left:calc(-1*(clamp(24px,4vw,80px) - 14px))}
   .am-one{object-fit:fill}
 }
+/* Biglietti da visita: 3 immagini 16:9 */
+.tb-gallery--3{grid-template-columns:repeat(3,1fr)}
+.tb-fig--w{aspect-ratio:16/9}
+.tb-block+.tb-block{margin-top:clamp(20px,2.6vw,40px)}
+@media(max-width:900px){.tb-gallery--3{grid-template-columns:1fr}}
