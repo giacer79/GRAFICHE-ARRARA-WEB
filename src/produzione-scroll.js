@@ -56,8 +56,8 @@
         t.done = eb >= 0.999;
         var x = t.dir * inv * (vw * 0.65), y = inv * 60;
         if (t.from === 'right') {
-          x = inv * (vw - sr.left + 120);
-          y = inv * (sr.height * 0.62);
+          x = inv * inv * (vw - sr.left + 120);
+          y = inv * Math.max(sr.height * 0.95, vh * 0.65);
         }
         t.el.style.opacity = Math.min(1, eb * 4).toFixed(3);
         t.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (t.final + inv * t.spin).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';

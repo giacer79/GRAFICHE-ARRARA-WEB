@@ -780,3 +780,4 @@ Ordine cronologico, più recente in fondo.
 - Scatole: scatola bianca Arrara rigenerata con spessore, scanalatura coperchio/base, spigoli smussati e ombra di contatto più realistici (scatola-arrara.webp); larghezza 36%.
 - Scatole: la scatola bianca entra da destra (dal basso a destra, sotto la Pastel) partendo dopo la Pastel, quindi movimento più lungo e lento; verificato per simulazione che non si sovrappongono mai durante lo scroll (desktop e mobile).
 - Scatole: tassello di testo a sinistra non più stirato (altezza del solo contenuto, centrato) e compare appena la scatola Pastel ha finito di ruotare, così a centro pagina è visibile completo.
+- Scatole: ridotto lo spazio grigio sopra e sotto la sezione (area scatole proporzionata alla larghezza, margini ridotti); percorso d'entrata della scatola bianca corretto (sale da sotto) e riverificato: nessuna sovrapposizione in tutto lo scroll.
