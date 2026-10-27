@@ -779,3 +779,4 @@ Ordine cronologico, più recente in fondo.
 - Scatole: entrambe le scatole ingrandite (Pastel 62%, Arrara 33% dell'area) e molto più vicine a fine movimento, senza sovrapporsi; area più alta.
 - Scatole: scatola bianca Arrara rigenerata con spessore, scanalatura coperchio/base, spigoli smussati e ombra di contatto più realistici (scatola-arrara.webp); larghezza 36%.
 - Scatole: la scatola bianca entra da destra (dal basso a destra, sotto la Pastel) partendo dopo la Pastel, quindi movimento più lungo e lento; verificato per simulazione che non si sovrappongono mai durante lo scroll (desktop e mobile).
+- Scatole: tassello di testo a sinistra non più stirato (altezza del solo contenuto, centrato) e compare appena la scatola Pastel ha finito di ruotare, così a centro pagina è visibile completo.

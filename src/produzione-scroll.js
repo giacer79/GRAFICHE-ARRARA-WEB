@@ -88,7 +88,7 @@
   }
   function boxesDone() {
     var bs = targets.filter(function (t) { return t.mode === 'box'; });
-    if (bs.length) bs[0].item.classList.toggle('box-done', bs.every(function (t) { return t.done; }));
+    if (bs.length) bs[0].item.classList.toggle('box-done', bs[0].done);
   }
   function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   addEventListener('scroll', req, { passive: true });

@@ -71,7 +71,8 @@
 .prod-fly [data-fly]{will-change:transform,opacity}
 
 /* Scatole e packaging: palco grigio con la scatola che entra e ruota (vedi produzione-scroll.js) */
-.am-item:has(.am-media--box){align-items:stretch}
+.am-item:has(.am-media--box){align-items:center}
+#scatole>.am-copy{align-self:center}
 .am-media--box{grid-template-columns:1fr;position:relative}
 .bx-stage{position:relative;min-height:clamp(440px,62vw,860px);display:grid;place-items:center;background:none}
 .bx-box{position:absolute;left:37%;top:50%;margin-top:-31%;width:62%;aspect-ratio:1;will-change:transform,filter;filter:drop-shadow(0 18px 26px rgba(10,20,25,.38))}
