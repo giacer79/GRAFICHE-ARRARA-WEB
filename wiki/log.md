@@ -776,3 +776,4 @@ Ordine cronologico, più recente in fondo.
 - Rimossi i bagliori verdi animati dai pannelli di testo: ripristinati i bagliori statici originali (`pnGlow` eliminato da `pagine.css`).
 - Scatole: aggiunta scatolina bianca con logo Arrara (`assets/scatola-arrara.webp`, generata: coperchio bianco + logo con testo scuro), in basso a sinistra del palco; entra da sinistra ruotando (+330° → -14°), con ombra, leggermente in ritardo sulla scatola Pastel. Il box di testo compare quando entrambe sono ferme.
 - Scatole: le due scatole non si sovrappongono (posizionate in modo assoluto: Pastel a destra al 54%, Arrara in basso a sinistra al 24%); la scatolina bianca entra in diagonale da fuori in alto a sinistra dello schermo.
+- Scatole: entrambe le scatole ingrandite (Pastel 62%, Arrara 33% dell'area) e molto più vicine a fine movimento, senza sovrapporsi; area più alta.
