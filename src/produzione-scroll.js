@@ -14,7 +14,7 @@
       var big = it.querySelector('.bx-box:not(.bx-box--small)'), sm = it.querySelector('.bx-box--small');
       // scatola grande: entra da destra, finisce a +20°; scatolina bianca: entra da sinistra, finisce a -14° (un po' dopo)
       if (big) targets.push({ el: big, item: it, stage: stage, dir: 1, final: 20, spin: -300, lag: 0, mode: 'box', delay: 0 });
-      if (sm) targets.push({ el: sm, item: it, stage: stage, dir: -1, final: -14, spin: 330, lag: 0.12, mode: 'box', delay: 0 });
+      if (sm) targets.push({ el: sm, item: it, stage: stage, dir: -1, final: -14, spin: 330, lag: 0.12, from: 'top', mode: 'box', delay: 0 });
       return;
     }
     add(it.querySelector(':scope > .am-copy'));
@@ -54,7 +54,11 @@
         var pb = Math.max(0, Math.min(1, (vh * 0.9 - sr.top - t.lag * vh) / (vh * 0.7)));
         var eb = ease(pb), inv = 1 - eb;
         t.done = eb >= 0.999;
-        var x = t.dir * inv * (vw * 0.7), y = inv * 60;
+        var x = t.dir * inv * (vw * 0.65), y = inv * 60;
+        if (t.from === 'top') {   // la scatolina bianca parte da fuori in alto a sinistra dello schermo e arriva in diagonale
+          x = -inv * (sr.left + sr.width * 0.15 + 260);
+          y = -inv * (sr.top + sr.height * 0.82 + 260);
+        }
         t.el.style.opacity = Math.min(1, eb * 4).toFixed(3);
         t.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (t.final + inv * t.spin).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';
         t.el.style.filter = 'drop-shadow(0 ' + (6 + 20 * eb).toFixed(1) + 'px ' + (8 + 24 * eb).toFixed(1) + 'px rgba(10,20,25,' + (0.18 + 0.2 * eb).toFixed(2) + '))';
