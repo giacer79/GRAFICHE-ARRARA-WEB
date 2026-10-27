@@ -755,3 +755,4 @@ Ordine cronologico, più recente in fondo.
 ## 2026-10-27 — Produzione: categoria Tabloid
 - Tabloid è ora una sotto-categoria dentro Piccolo formato (`#tabloid` in `produzione.html`): solo titolo + 4 immagini (`assets/tabloid-1..4.webp`), non cliccabili. Testo con parole chiave presente ma nascosto visivamente (`.tb-seo`, sr-only). Nessun link nel menu `.am-jump`.
 - Piccolo formato: i 2 segnaposto sostituiti da un'unica immagine grande (`assets/piccolo-formato.webp`, mockup stampati generici).
+- Piccolo formato: l'immagine segue sempre l'altezza del box testo accanto (align stretch + object-fit cover); sotto i 900 px torna 3:2.

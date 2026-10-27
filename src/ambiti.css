@@ -42,4 +42,8 @@
 @media(max-width:560px){.tb-gallery{grid-template-columns:1fr}}
 .tb-seo{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .am-media--one{grid-template-columns:1fr}
-.am-one{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+/* Immagine unica: stessa altezza del box testo accanto */
+.am-item:has(.am-media--one){align-items:stretch}
+.am-media--one{position:relative}
+.am-one{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:900px){.am-one{height:auto;aspect-ratio:3/2}}
