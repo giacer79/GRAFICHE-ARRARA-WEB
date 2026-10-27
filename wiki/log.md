@@ -773,3 +773,4 @@ Ordine cronologico, più recente in fondo.
 - Scatole e packaging: niente ingresso di testo/immagini; palco grigio (`.bx-stage`) con la scatola Pastel (`assets/scatola-pastel.webp`, trasparente) che entra da destra ruotando (-300° → 0) e si ingrandisce, con ombra (drop-shadow) che si definisce atterrando; legata allo scroll (`mode:'box'` in `produzione-scroll.js`). Il box di testo resta fermo.
 - Scatole: il box di testo a sinistra compare solo a rotazione completata (classe `box-done` sulla sezione, fade+slide da sinistra); scatola ingrandita (84% del palco, max 600 px; palco più alto).
 - Scatole: a fine movimento la scatola resta ruotata di 20°; tolto il fondino grigio dietro la scatola (resta il grigio della pagina), box ridotto a 76% (max 540 px) per stare nella colonna.
+- Rimossi i bagliori verdi animati dai pannelli di testo: ripristinati i bagliori statici originali (`pnGlow` eliminato da `pagine.css`).
