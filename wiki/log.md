@@ -751,3 +751,6 @@ Ordine cronologico, più recente in fondo.
 ## 2026-10-21 — Audio nell'intro
 - Aggiunto `intro-audio.js`: colonna sonora sintetizzata (Web Audio, nessun file): ambiente d'ufficio, sweep all'uscita dal video, rintocco sul logo.
 - Pulsante Audio/Muto in basso a sinistra nell'intro (scelta ricordata per la sessione). I browser bloccano l'audio senza gesto: parte al primo clic/tasto ("Tocca per audio").
+
+## 2026-10-27 — Produzione: categoria Tabloid
+- Nuova sezione `#tabloid` (01 / B) sotto Piccolo formato in `produzione.html`, con testo (formato 28×43 cm) e galleria 2×2 di 4 immagini reali (`assets/tabloid-1..4.webp`, mockup brochure). Stili in `ambiti.css` (`.am-item--tb`, `.tb-gallery`). Aggiunto link nella barra `.am-jump`.
