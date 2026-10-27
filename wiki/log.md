@@ -760,3 +760,4 @@ Ordine cronologico, più recente in fondo.
 - Ripristinata la versione precedente di Piccolo formato: immagine (mockup stampati) affiancata al box testo, alta quanto il box; niente sovrapposizione.
 - Piccolo formato: immagine avvicinata al box di sinistra (gap 14 px su desktop), leggermente allargata; altezza sempre pari al box.
 - Piccolo formato: nuova sotto-categoria BIGLIETTI DA VISITA sopra Tabloid (`#biglietti-da-visita`, 3 immagini 16:9 `assets/biglietti-1..3.webp`, testo SEO nascosto come per Tabloid).
+- Piccolo formato: nuova sotto-categoria CARTOTECNICA sotto Tabloid (`#cartotecnica`, 2 immagini 16:9: calendari da tavolo e quaderni The Abbiàtenser; testo SEO nascosto).
