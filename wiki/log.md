@@ -753,4 +753,4 @@ Ordine cronologico, più recente in fondo.
 - Pulsante Audio/Muto in basso a sinistra nell'intro (scelta ricordata per la sessione). I browser bloccano l'audio senza gesto: parte al primo clic/tasto ("Tocca per audio").
 
 ## 2026-10-27 — Produzione: categoria Tabloid
-- Nuova sezione `#tabloid` (01 / B) sotto Piccolo formato in `produzione.html`, con testo (formato 28×43 cm) e galleria 2×2 di 4 immagini reali (`assets/tabloid-1..4.webp`, mockup brochure). Stili in `ambiti.css` (`.am-item--tb`, `.tb-gallery`). Aggiunto link nella barra `.am-jump`.
+- Tabloid è ora una sotto-categoria dentro Piccolo formato (`#tabloid` in `produzione.html`): solo titolo + 4 immagini (`assets/tabloid-1..4.webp`), non cliccabili. Testo con parole chiave presente ma nascosto visivamente (`.tb-seo`, sr-only). Nessun link nel menu `.am-jump`.
