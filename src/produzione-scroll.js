@@ -45,7 +45,10 @@
       var start = vh * 0.98 - t.delay * vh * 0.25;
       var p = Math.max(0, Math.min(1, (start - r.top) / (vh * 0.52)));
       var e = ease(p);
-      if (t.mode === 'open') {   // si apre in orizzontale a partire da una linea centrale
+      if (t.mode === 'open') {   // si apre in orizzontale da una linea centrale, ma solo quando il fondo dell'elemento è già entrato nello schermo
+        var base = Math.min(r.bottom, r.top + vh * 0.85);
+        var po = Math.max(0, Math.min(1, (vh * 0.98 - t.delay * vh * 0.1 - base) / (vh * 0.3)));
+        e = ease(po);
         var h = (1 - e) * 50;
         t.el.style.opacity = '1';
         t.el.style.transform = 'none';
