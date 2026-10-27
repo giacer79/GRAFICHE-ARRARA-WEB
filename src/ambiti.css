@@ -59,3 +59,13 @@
 @media(max-width:900px){.tb-gallery--3{grid-template-columns:1fr}}
 .tb-gallery--2{grid-template-columns:repeat(2,1fr)}
 @media(max-width:900px){.tb-gallery--2{grid-template-columns:1fr}}
+
+/* Hero Produzione con immagine */
+.am-hero--img{min-height:clamp(420px,44vw,640px);display:flex;align-items:center;
+  background:linear-gradient(90deg,#111d2d 0%,rgba(17,29,45,.9) 26%,rgba(17,29,45,.45) 54%,rgba(17,29,45,.05) 100%),url(assets/produzione-hero.webp) 70% center/cover no-repeat,#111d2d}
+.am-hero--img::before{display:none}
+.am-hero--img .wrap{width:var(--page);margin-inline:auto}
+@media(max-width:700px){.am-hero--img{background:linear-gradient(180deg,rgba(17,29,45,.9) 0%,rgba(17,29,45,.78) 60%,rgba(17,29,45,.6) 100%),url(assets/produzione-hero.webp) 65% center/cover no-repeat,#111d2d}}
+/* Produzione: le sezioni entrano dai lati scrollando (vedi produzione-scroll.js) */
+.prod-fly main{overflow-x:clip}
+.prod-fly [data-fly]{will-change:transform,opacity}
