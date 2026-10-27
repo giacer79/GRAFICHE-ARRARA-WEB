@@ -1,19 +1,21 @@
 /* Pagina Produzione: man mano che si scrolla, box e immagini arrivano da fuori pagina (dai lati) e si compongono.
+   Alcuni elementi (immagini principali, gallerie Tabloid e Cartotecnica) invece si aprono in orizzontale da una linea centrale.
    Animazione legata allo scroll: tornando su, gli elementi ripartono verso l'esterno. */
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var root = document.documentElement;
   var items = Array.prototype.slice.call(document.querySelectorAll('.am-item'));
   var targets = [];
-  function add(el, extra) { if (el) targets.push({ el: el, dir: 1, delay: extra || 0 }); }
+  function add(el, extra, mode) { if (el) targets.push({ el: el, dir: 1, delay: extra || 0, mode: mode || 'fly' }); }
   items.forEach(function (it) {
     it.classList.remove('pg-reveal');            // niente doppia animazione
     add(it.querySelector(':scope > .am-copy'));
-    add(it.querySelector(':scope > .am-media'), .08);
+    add(it.querySelector(':scope > .am-media'), .08, 'open');
     var blocks = it.querySelectorAll(':scope > .tb-block');
     Array.prototype.forEach.call(blocks, function (b) {
       add(b.querySelector('.tb-title'));
-      Array.prototype.forEach.call(b.querySelectorAll('.tb-fig'), function (f, i) { add(f, i * .07); });
+      var open = (b.id === 'tabloid' || b.id === 'cartotecnica') ? 'open' : 'fly';
+      Array.prototype.forEach.call(b.querySelectorAll('.tb-fig'), function (f, i) { add(f, i * .07, open); });
     });
   });
   var band = document.querySelector('.am-cta-band .wrap');
@@ -26,7 +28,7 @@
   var vw = innerWidth, vh = innerHeight;
   function measure() {
     vw = innerWidth; vh = innerHeight;
-    targets.forEach(function (t) { t.el.style.transform = 'none'; });
+    targets.forEach(function (t) { t.el.style.transform = 'none'; t.el.style.clipPath = 'none'; });
     targets.forEach(function (t) {
       var r = t.el.getBoundingClientRect();
       t.dir = (r.left + r.width / 2) < vw / 2 ? -1 : 1;
@@ -43,6 +45,13 @@
       var start = vh * 0.98 - t.delay * vh * 0.25;
       var p = Math.max(0, Math.min(1, (start - r.top) / (vh * 0.52)));
       var e = ease(p);
+      if (t.mode === 'open') {   // si apre in orizzontale a partire da una linea centrale
+        var h = (1 - e) * 50;
+        t.el.style.opacity = '1';
+        t.el.style.transform = 'none';
+        t.el.style.clipPath = e >= 0.999 ? 'none' : 'inset(' + h.toFixed(2) + '% 0 ' + h.toFixed(2) + '% 0)';
+        return;
+      }
       var x = t.dir * (1 - e) * vw * 0.75;
       var y = t.dir === 0 ? (1 - e) * 80 : 0;
       t.el.style.opacity = (0.15 + 0.85 * e).toFixed(3);

@@ -768,3 +768,4 @@ Ordine cronologico, più recente in fondo.
 ## 2026-10-27 — Produzione: hero con immagine e sezioni che entrano dai lati
 - Hero di `produzione.html` con immagine (`assets/produzione-hero.webp`, mockup coordinato Arrara) sotto un gradiente scuro a sinistra per la leggibilità.
 - Nuovo `produzione-scroll.js`: box, immagini, titoli e gallerie entrano da fuori pagina (dai lati) e si compongono scrollando; legato allo scroll (reversibile), disattivato con prefers-reduced-motion; `main{overflow-x:clip}` evita lo scroll orizzontale.
+- `produzione-scroll.js`: alcuni elementi (immagine principale di Piccolo formato, gallerie Tabloid e Cartotecnica) non volano dai lati ma si aprono in orizzontale da una linea centrale (clip-path inset 50% → 0), sempre legati allo scroll.
