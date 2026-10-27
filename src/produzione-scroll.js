@@ -9,7 +9,14 @@
   function add(el, extra, mode) { if (el) targets.push({ el: el, dir: 1, delay: extra || 0, mode: mode || 'fly' }); }
   items.forEach(function (it) {
     it.classList.remove('pg-reveal');            // niente doppia animazione
-    if (it.id === 'scatole') { var bx = it.querySelector('.bx-box'); if (bx) targets.push({ el: bx, item: it, stage: it.querySelector('.bx-stage'), dir: 1, delay: 0, mode: 'box' }); return; }
+    if (it.id === 'scatole') {
+      var stage = it.querySelector('.bx-stage');
+      var big = it.querySelector('.bx-box:not(.bx-box--small)'), sm = it.querySelector('.bx-box--small');
+      // scatola grande: entra da destra, finisce a +20°; scatolina bianca: entra da sinistra, finisce a -14° (un po' dopo)
+      if (big) targets.push({ el: big, item: it, stage: stage, dir: 1, final: 20, spin: -300, lag: 0, mode: 'box', delay: 0 });
+      if (sm) targets.push({ el: sm, item: it, stage: stage, dir: -1, final: -14, spin: 330, lag: 0.12, mode: 'box', delay: 0 });
+      return;
+    }
     add(it.querySelector(':scope > .am-copy'));
     add(it.querySelector(':scope > .am-media'), .08, 'open');
     var blocks = it.querySelectorAll(':scope > .tb-block');
@@ -42,14 +49,14 @@
   function update() {
     ticking = false;
     targets.forEach(function (t) {
-      if (t.mode === 'box') {   // scatola: entra da destra ruotando, con ombra che si definisce atterrando; coordinata allo scroll
+      if (t.mode === 'box') {   // scatole: entrano dai lati ruotando, con ombra che si definisce atterrando; coordinate allo scroll
         var sr = t.stage.getBoundingClientRect();
-        var pb = Math.max(0, Math.min(1, (vh * 0.9 - sr.top) / (vh * 0.7)));
+        var pb = Math.max(0, Math.min(1, (vh * 0.9 - sr.top - t.lag * vh) / (vh * 0.7)));
         var eb = ease(pb), inv = 1 - eb;
-        t.item.classList.toggle('box-done', eb >= 0.999);   // il box di testo compare solo a rotazione completata
-        var x = inv * (vw * 0.55), y = inv * 60;
+        t.done = eb >= 0.999;
+        var x = t.dir * inv * (vw * 0.7), y = inv * 60;
         t.el.style.opacity = Math.min(1, eb * 4).toFixed(3);
-        t.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (20 - inv * 300).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';   // a fine corsa resta ruotata di 20°
+        t.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (t.final + inv * t.spin).toFixed(1) + 'deg) scale(' + (0.5 + 0.5 * eb).toFixed(3) + ')';
         t.el.style.filter = 'drop-shadow(0 ' + (6 + 20 * eb).toFixed(1) + 'px ' + (8 + 24 * eb).toFixed(1) + 'px rgba(10,20,25,' + (0.18 + 0.2 * eb).toFixed(2) + '))';
         return;
       }
@@ -73,6 +80,11 @@
       t.el.style.opacity = (0.15 + 0.85 * e).toFixed(3);
       t.el.style.transform = e >= 0.999 ? 'none' : 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + (t.dir * (1 - e) * 2.2).toFixed(2) + 'deg)';
     });
+    boxesDone();
+  }
+  function boxesDone() {
+    var bs = targets.filter(function (t) { return t.mode === 'box'; });
+    if (bs.length) bs[0].item.classList.toggle('box-done', bs.every(function (t) { return t.done; }));
   }
   function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   addEventListener('scroll', req, { passive: true });

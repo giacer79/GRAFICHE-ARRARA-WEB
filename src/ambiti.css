@@ -80,3 +80,4 @@
 /* Scatole: il box di testo compare solo quando la scatola ha finito di ruotare */
 .prod-fly #scatole>.am-copy{opacity:0;transform:translateX(-48px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .prod-fly #scatole.box-done>.am-copy{opacity:1;transform:none}
+.bx-box--small{position:absolute;left:1%;bottom:2%;width:min(33%,240px);z-index:2}

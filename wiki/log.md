@@ -774,3 +774,4 @@ Ordine cronologico, più recente in fondo.
 - Scatole: il box di testo a sinistra compare solo a rotazione completata (classe `box-done` sulla sezione, fade+slide da sinistra); scatola ingrandita (84% del palco, max 600 px; palco più alto).
 - Scatole: a fine movimento la scatola resta ruotata di 20°; tolto il fondino grigio dietro la scatola (resta il grigio della pagina), box ridotto a 76% (max 540 px) per stare nella colonna.
 - Rimossi i bagliori verdi animati dai pannelli di testo: ripristinati i bagliori statici originali (`pnGlow` eliminato da `pagine.css`).
+- Scatole: aggiunta scatolina bianca con logo Arrara (`assets/scatola-arrara.webp`, generata: coperchio bianco + logo con testo scuro), in basso a sinistra del palco; entra da sinistra ruotando (+330° → -14°), con ombra, leggermente in ritardo sulla scatola Pastel. Il box di testo compare quando entrambe sono ferme.
