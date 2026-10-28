@@ -497,3 +497,9 @@ body.intro-active{overflow:hidden}
 @keyframes wt-arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 @media(max-width:900px){.web-tab{padding-right:22px}}
 @media(prefers-reduced-motion:reduce){.web-tab-row{animation:none}.web-tab{transition:none;transform:none}.web-tab.is-on,.web-tab-go{animation:none}}
+/* Meno spazio tra hero e card */
+.hero{min-height:0}
+.hero-content{padding-bottom:36px}
+.web-tab-row{padding-top:18px}
+.services{padding-top:16px}
+@media(max-width:700px){.hero{min-height:0}.hero-content{padding-bottom:26px}}
