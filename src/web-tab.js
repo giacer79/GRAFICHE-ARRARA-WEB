@@ -18,7 +18,7 @@
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (e) {
       if (e[0].isIntersecting) { show(); io.disconnect(); }
-    }, { threshold: 0.2 });
-    io.observe(services);
+    }, { threshold: 0.6 });
+    io.observe(tab.parentNode);
   } else show();
 })();
