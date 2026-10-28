@@ -483,13 +483,16 @@ body.intro-active{overflow:hidden}
 .site-intro-wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .site-intro-mark{position:relative}
 
-/* Banner servizio web (home) */
-.web-banner-wrap{padding-top:25px}
-.web-banner{display:flex;align-items:center;gap:clamp(14px,3vw,40px);background:#ff004e;color:#fff;padding:clamp(16px,1.9vw,26px) clamp(18px,2.6vw,40px);clip-path:polygon(2% 0,100% 0,100% 100%,0 100%,0 22%);transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 10px 30px rgba(255,0,78,.28)}
-.web-banner:hover,.web-banner:focus-visible{background:#d70043;transform:translateY(-2px)}
-.web-banner-tag{font-size:.68rem;font-weight:900;letter-spacing:.12em;border:1.5px solid rgba(255,255,255,.85);padding:6px 10px;white-space:nowrap}
-.web-banner strong{font-family:Averta,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(1.15rem,2.2vw,2rem);line-height:1.05;flex:1;min-width:0}
-.web-banner-go{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:900;letter-spacing:.08em;background:#fff;color:#ff004e;padding:12px 18px;white-space:nowrap}
-.web-banner-go span{font-size:1.2rem;line-height:1;transition:transform .2s}
-.web-banner:hover .web-banner-go span{transform:translateX(4px)}
-@media(max-width:700px){.web-banner{flex-wrap:wrap;gap:10px}.web-banner strong{flex-basis:100%;order:2}.web-banner-tag{order:1}.web-banner-go{order:3}}
+/* Linguetta servizio web (home): fixed, da destra, pulsa */
+.web-tab{position:fixed;right:0;bottom:max(96px,calc(env(safe-area-inset-bottom,0px) + 90px));z-index:50;width:var(--wt-w,45vw);display:flex;align-items:center;justify-content:space-between;gap:18px;background:#ff004e;color:#fff;padding:12px 58px 12px 30px;clip-path:polygon(16px 0,100% 0,100% 100%,0 100%,0 16px);transform-origin:100% 50%;opacity:0;transform:translateX(70px);pointer-events:none;transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1),background .2s}
+.web-tab.is-on{opacity:1;transform:none;pointer-events:auto;animation:wt-pulse 2.6s ease-in-out 1.2s infinite}
+.web-tab:hover,.web-tab:focus-visible{background:#d70043;animation-play-state:paused}
+body.intro-active .web-tab{display:none}
+.web-tab-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.web-tab-tag{font-size:.62rem;font-weight:900;letter-spacing:.14em;opacity:.92}
+.web-tab strong{font-family:Averta,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(1rem,1.5vw,1.45rem);line-height:1.05}
+.web-tab-go{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;color:#ff004e;font-size:1.15rem;font-weight:900;animation:wt-arrow 2.6s ease-in-out 1.2s infinite}
+@keyframes wt-pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.045);filter:brightness(1.18)}}
+@keyframes wt-arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@media(max-width:900px){.web-tab{padding-right:22px;bottom:max(90px,calc(env(safe-area-inset-bottom,0px) + 84px))}}
+@media(prefers-reduced-motion:reduce){.web-tab{transition:none;transform:none}.web-tab.is-on,.web-tab-go{animation:none}}
