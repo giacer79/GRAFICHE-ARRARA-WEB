@@ -83,3 +83,6 @@
 .prod-fly #scatole>.am-copy{opacity:0;transform:translateX(-48px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .prod-fly #scatole.box-done>.am-copy{opacity:1;transform:none}
 .bx-box--small{left:2%;top:auto;bottom:2%;margin-top:0;width:35%;z-index:2}
+.am-cta-band--web{background:#eceaec;color:#111d2d;border-top:1px solid rgba(17,29,45,.12)}
+.am-cta-band--web .am-cta{background:#111d2d;color:#fff}
+.am-cta-band--web+.am-cta-band{border-top:0}
