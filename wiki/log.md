@@ -785,3 +785,4 @@ Ordine cronologico, più recente in fondo.
 - Servizio web: tolte le fasce da produzione.html e progettazione-ambiti.html; aggiunto in home (index.html) un banner rosso con pulsante "Scopri" sopra le 5 card, che porta a servizio-web.html (stili in styles.css, .web-banner).
 - Servizio web: il banner in home diventa una linguetta rossa fissa (position:fixed, in basso a destra) che entra con fade + scorrimento da destra quando compaiono le card, arriva fino a metà della card Azienda (larghezza calcolata da web-tab.js), poi resta fissa e pulsa (scala/luminosità + freccia). Disattivata con prefers-reduced-motion e durante l'intro.
 - Linguetta servizio web spostata sopra le card (non più fissa in basso): entra da destra in fade quando compare, arriva a metà della card Azienda, resta lì e pulsa.
+- Linguetta servizio web: la pulsazione ora è solo di colore (rosso → rosa chiaro), senza cambio di dimensione.
