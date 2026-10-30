@@ -22,19 +22,6 @@
   function finish() {
     wg.classList.add('is-bar');
     setTimeout(function () { wg.classList.add('is-live'); }, reduce ? 0 : 1000);
-    if (!reduce) setTimeout(spinLoop, 3000);
-  }
-  /* ogni 3 secondi il globo fa un giro completo su sé stesso */
-  function spinLoop() {
-    var t0 = null, dur = 1700;
-    function step(t) {
-      if (t0 === null) t0 = t;
-      var p = Math.min(1, (t - t0) / dur), e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-      globe.style.setProperty('--ga', (360 * e).toFixed(1) + 'deg');
-      if (p < 1) requestAnimationFrame(step);
-      else { globe.style.setProperty('--ga', '0deg'); setTimeout(spinLoop, 3000); }
-    }
-    requestAnimationFrame(step);
   }
   function roll() {
     if (started) return; started = true;

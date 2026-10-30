@@ -792,3 +792,4 @@ Ordine cronologico, più recente in fondo.
 - 30/10/2026: tassello servizio web: Terra a colori anche in hover sul tassello; freccia sostituita da + (ruota di 90° in hover).
 - 30/10/2026: tassello servizio web: ora scorre fuori da dietro il globo (translateX da -101% a 0, ritagliato al centro del globo) invece del reveal a maschera.
 - 30/10/2026: globo servizio web: una volta in posizione fa un giro completo su sé stesso ogni 3 secondi (giro 1,7s + pausa 3s, ease in-out); disattivato con prefers-reduced-motion.
+- 30/10/2026: rimosso il giro del globo ogni 3 secondi (richiesta utente): il globo resta fermo in posizione.
